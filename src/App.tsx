@@ -6,7 +6,8 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Search, BookOpen, Sparkles, Filter, Plus, 
-  RotateCcw, Trophy, CheckCircle2, AlertCircle, Share2, Printer
+  RotateCcw, Trophy, CheckCircle2, AlertCircle, Share2, Printer,
+  Zap, Flame
 } from 'lucide-react';
 import { QuizSet, Question, PracticeConfig, ExamResult, MistakeRecord } from './types/quiz';
 import { 
@@ -26,6 +27,8 @@ import { MistakesNotebookView } from './components/MistakesNotebookView';
 import { ExamHistoryView } from './components/ExamHistoryView';
 import { ImportExportModal } from './components/ImportExportModal';
 import { PrintSheetModal } from './components/PrintSheetModal';
+import { IntroGuideModal } from './components/IntroGuideModal';
+import { SpeedCheatSheetView } from './components/SpeedCheatSheetView';
 
 export default function App() {
   // Navigation & View State
@@ -46,6 +49,7 @@ export default function App() {
   const [configModalSet, setConfigModalSet] = useState<QuizSet | null>(null);
   const [printModalSet, setPrintModalSet] = useState<QuizSet | null>(null);
   const [isImportModalOpen, setIsImportModalOpen] = useState(false);
+  const [isIntroOpen, setIsIntroOpen] = useState(false);
   const [studyReviewSetId, setStudyReviewSetId] = useState<string | undefined>(undefined);
 
   // Filters & Search
@@ -61,11 +65,20 @@ export default function App() {
   });
   const [fontSize, setFontSize] = useState<'normal' | 'large'>('normal');
 
-  // Load initial data
+  // Load initial data and check first-time intro
   useEffect(() => {
     setQuizSets(getAllQuizSets());
     setMistakes(getMistakes());
     setHistory(getExamHistory());
+
+    // Auto-open intro slide on first visit for students
+    if (typeof window !== 'undefined') {
+      const hasSeen = localStorage.getItem('khtn8_intro_seen');
+      if (!hasSeen) {
+        setIsIntroOpen(true);
+        localStorage.setItem('khtn8_intro_seen', 'true');
+      }
+    }
   }, []);
 
   // Sync theme
@@ -166,6 +179,31 @@ export default function App() {
         timeLimitMinutes: 0
       }
     });
+  };
+
+  const handleStartBlitz = () => {
+    const tongHop = quizSets.find(s => s.id === 'khtn8-tong-hop-bat-trang') || quizSets[0];
+    if (!tongHop) return;
+
+    // Pick 10 random questions and shuffle their options
+    const shuffledQ = shuffleArray(tongHop.questions).slice(0, 10).map(q => shuffleQuestionOptions(q));
+
+    setActiveSession({
+      quizSet: {
+        ...tongHop,
+        title: '⚡ Thử Thách Nhanh 10 Câu (3 Phút)'
+      },
+      questions: shuffledQ,
+      config: {
+        mode: 'exam',
+        questionCount: 10,
+        shuffleQuestions: true,
+        shuffleOptions: true,
+        timeLimitMinutes: 3
+      }
+    });
+
+    setExamResult(null);
   };
 
   const handleImportNewSet = (newSet: QuizSet) => {
@@ -272,29 +310,29 @@ export default function App() {
                     <span>Lớp 8B</span>
                   </div>
                   <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight">
-                    Đề Cương Ôn Tập Giữa Học Kì I Môn KHTN 8
+                    Đề Cương Ôn Tập Giữa Học Kì I - Lớp 8B
                   </h1>
                   <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl">
-                    Hệ thống trọn vẹn toàn bộ đề cương chính thức: 55 câu trắc nghiệm (Vật lý, Hóa học, Sinh học) · 30 câu đúng/sai · 30 câu trả lời ngắn · 9 bài tự luận có lời giải chi tiết.
+                    Hệ thống trọn vẹn đề cương chính thức: KHTN 8 (Lý, Hóa, Sinh) · TOÁN 8 (Đại số & Hình học) · NGỮ VĂN 8 (Tiếng Việt & Bên bờ Thiên Mạc) có hướng dẫn giải chi tiết.
                   </p>
 
                   {/* Bright Quick Stat Counters */}
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1 text-xs">
                     <div className="bg-white/10 backdrop-blur-xs border border-white/15 rounded-xl p-2.5 text-center">
-                      <div className="text-lg font-extrabold text-emerald-300 tabular-nums">55</div>
-                      <div className="text-[11px] text-slate-300">Trắc nghiệm 4 lựa chọn</div>
+                      <div className="text-lg font-extrabold text-emerald-300 tabular-nums">3 Môn</div>
+                      <div className="text-[11px] text-slate-300">KHTN · Toán · Ngữ Văn</div>
                     </div>
                     <div className="bg-white/10 backdrop-blur-xs border border-white/15 rounded-xl p-2.5 text-center">
-                      <div className="text-lg font-extrabold text-amber-300 tabular-nums">30</div>
-                      <div className="text-[11px] text-slate-300">Trắc nghiệm Đúng / Sai</div>
+                      <div className="text-lg font-extrabold text-amber-300 tabular-nums">10 Bộ Đề</div>
+                      <div className="text-[11px] text-slate-300">Luyện thi theo chuyên đề</div>
                     </div>
                     <div className="bg-white/10 backdrop-blur-xs border border-white/15 rounded-xl p-2.5 text-center">
-                      <div className="text-lg font-extrabold text-sky-300 tabular-nums">30</div>
-                      <div className="text-[11px] text-slate-300">Câu trả lời ngắn</div>
+                      <div className="text-lg font-extrabold text-sky-300 tabular-nums">120+</div>
+                      <div className="text-[11px] text-slate-300">Câu trắc nghiệm có lời giải</div>
                     </div>
                     <div className="bg-white/10 backdrop-blur-xs border border-white/15 rounded-xl p-2.5 text-center">
-                      <div className="text-lg font-extrabold text-purple-300 tabular-nums">9</div>
-                      <div className="text-[11px] text-slate-300">Bài tập tự luận lớn</div>
+                      <div className="text-lg font-extrabold text-purple-300 tabular-nums">49 Câu</div>
+                      <div className="text-[11px] text-slate-300">Tự luận & Đọc hiểu chi tiết</div>
                     </div>
                   </div>
 
@@ -307,7 +345,23 @@ export default function App() {
                       className="inline-flex items-center gap-2 px-5 py-2.5 text-xs sm:text-sm font-bold text-slate-900 bg-white hover:bg-slate-100 rounded-xl shadow-md transition-all cursor-pointer"
                     >
                       <Trophy className="w-4 h-4 text-emerald-700" />
-                      <span>Thi Thử Tổng Hợp (55 Câu)</span>
+                      <span>Thi Thử KHTN 8 (55 Câu)</span>
+                    </button>
+
+                    <button
+                      onClick={() => setCurrentTab('speed')}
+                      className="inline-flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-500 hover:to-amber-500 rounded-xl shadow-md transition-all cursor-pointer"
+                    >
+                      <Flame className="w-4 h-4 text-amber-200" />
+                      <span>Bí Kíp 5 Phút (Lý-Hóa-Sinh-Toán-Văn)</span>
+                    </button>
+
+                    <button
+                      onClick={handleStartBlitz}
+                      className="inline-flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold text-white bg-amber-600/90 hover:bg-amber-500 border border-amber-400/40 rounded-xl shadow-sm transition-all cursor-pointer"
+                    >
+                      <Zap className="w-4 h-4 text-amber-200" />
+                      <span>Đấu Nhanh 10 Câu (3 Phút)</span>
                     </button>
 
                     <button
@@ -315,20 +369,15 @@ export default function App() {
                       className="inline-flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-semibold text-white bg-emerald-700/80 hover:bg-emerald-600 border border-emerald-500/40 rounded-xl transition-all cursor-pointer"
                     >
                       <BookOpen className="w-4 h-4" />
-                      <span>Tự Luận & Trả Lời Ngắn (39 Câu)</span>
+                      <span>Tự Luận & Đọc Hiểu (49 Câu)</span>
                     </button>
 
                     <button
-                      onClick={() => {
-                        const firstWithSummary = quizSets.find(s => s.summaries && s.summaries.length > 0) || quizSets[0];
-                        if (firstWithSummary) {
-                          setStudyReviewSetId(firstWithSummary.id);
-                          setCurrentTab('study');
-                        }
-                      }}
+                      onClick={() => setIsIntroOpen(true)}
                       className="inline-flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-semibold text-white bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 rounded-xl transition-all cursor-pointer"
                     >
-                      <span>Ôn Lý Thuyết & Công Thức</span>
+                      <Sparkles className="w-4 h-4 text-amber-300" />
+                      <span>Hướng Dẫn & Giới Thiệu</span>
                     </button>
                   </div>
                 </div>
@@ -458,6 +507,14 @@ export default function App() {
               onBackToLibrary={() => setCurrentTab('library')}
             />
           )}
+
+          {/* Tab 5: Speed Cheat Sheet / Bí Kíp Cấp Tốc 5 Phút & 7 Bẫy Đề */}
+          {currentTab === 'speed' && (
+            <SpeedCheatSheetView
+              onBackToLibrary={() => setCurrentTab('library')}
+              onStartBlitz={handleStartBlitz}
+            />
+          )}
         </main>
 
         {/* Practice Config Modal */}
@@ -483,6 +540,16 @@ export default function App() {
           quizSet={printModalSet}
           isOpen={!!printModalSet}
           onClose={() => setPrintModalSet(null)}
+        />
+
+        {/* Interactive Intro Slide Showcase */}
+        <IntroGuideModal
+          isOpen={isIntroOpen}
+          onClose={() => setIsIntroOpen(false)}
+          onStartExam={() => {
+            const tongHop = quizSets.find(s => s.id === 'khtn8-tong-hop-bat-trang') || quizSets[0];
+            if (tongHop) handleOpenPracticeConfig(tongHop);
+          }}
         />
 
       </div>

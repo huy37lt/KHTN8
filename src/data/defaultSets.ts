@@ -1,6 +1,8 @@
 import { QuizSet } from '../types/quiz';
+import { MATH_QUIZ_SETS } from './mathSets';
+import { LITERATURE_QUIZ_SETS } from './literatureSets';
 
-export const DEFAULT_QUIZ_SETS: QuizSet[] = [
+const KHTN_DEFAULT_SETS: QuizSet[] = [
   {
     id: 'khtn8-tong-hop-bat-trang',
     title: 'Đề Thi Tổng Hợp Giữa HK1 KHTN 8 - THCS Bát Tràng (Toàn Bộ Đề Cương)',
@@ -1727,3 +1729,10 @@ export const DEFAULT_QUIZ_SETS: QuizSet[] = [
     ]
   }
 ];
+
+export const DEFAULT_QUIZ_SETS: QuizSet[] = [
+  ...KHTN_DEFAULT_SETS,
+  ...MATH_QUIZ_SETS,
+  ...LITERATURE_QUIZ_SETS
+];
+

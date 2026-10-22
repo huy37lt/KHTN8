@@ -2,7 +2,7 @@ import React from 'react';
 import { Volume2, VolumeX, Plus, Moon, Sun, Type } from 'lucide-react';
 import { isSoundEnabled, setSoundEnabled } from '../utils/audio';
 
-export type NavTab = 'library' | 'study' | 'written' | 'mistakes' | 'history';
+export type NavTab = 'library' | 'study' | 'speed' | 'written' | 'mistakes' | 'history';
 
 interface HeaderProps {
   currentTab: NavTab;
@@ -45,9 +45,9 @@ export const Header: React.FC<HeaderProps> = ({
             >
               <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
                 <span className="w-7 h-7 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-sm font-extrabold shadow-sm">
-                  KHTN
+                  8B
                 </span>
-                Ôn Luyện KHTN 8
+                Ôn Luyện Lớp 8B
               </span>
             </button>
           </div>
@@ -73,6 +73,16 @@ export const Header: React.FC<HeaderProps> = ({
               }`}
             >
               Ôn Kiến Thức
+            </button>
+            <button
+              onClick={() => onSelectTab('speed')}
+              className={`hover:text-slate-900 dark:hover:text-white transition-colors whitespace-nowrap shrink-0 py-1 border-b-2 cursor-pointer flex items-center gap-1.5 ${
+                currentTab === 'speed'
+                  ? 'border-amber-500 text-amber-600 dark:text-amber-400 font-bold'
+                  : 'border-transparent text-slate-700 dark:text-slate-300 font-semibold'
+              }`}
+            >
+              <span>🔥 Bí Kíp 5 Phút</span>
             </button>
             <button
               onClick={() => onSelectTab('written')}
@@ -167,6 +177,12 @@ export const Header: React.FC<HeaderProps> = ({
             className={`cursor-pointer ${currentTab === 'study' ? 'text-emerald-600 font-bold' : ''}`}
           >
             Ôn Kiến Thức
+          </button>
+          <button
+            onClick={() => onSelectTab('speed')}
+            className={`cursor-pointer ${currentTab === 'speed' ? 'text-amber-600 font-bold' : ''}`}
+          >
+            Bí Kíp 5p
           </button>
           <button
             onClick={() => onSelectTab('written')}

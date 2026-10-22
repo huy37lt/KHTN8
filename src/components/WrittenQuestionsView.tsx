@@ -12,10 +12,12 @@ interface WrittenQuestionsViewProps {
 export const WrittenQuestionsView: React.FC<WrittenQuestionsViewProps> = ({
   onBackToLibrary
 }) => {
-  const [selectedSubject, setSelectedSubject] = useState<'all' | 'Vật Lý' | 'Hóa Học' | 'Sinh Học'>('all');
+  const [selectedSubject, setSelectedSubject] = useState<string>('all');
   const [selectedType, setSelectedType] = useState<'all' | 'short' | 'essay'>('all');
   const [search, setSearch] = useState('');
   const [expandedIds, setExpandedIds] = useState<string[]>([]);
+
+  const availableSubjects = ['all', ...Array.from(new Set(WRITTEN_QUESTIONS_DATA.map(q => q.subject)))];
 
   const filtered = WRITTEN_QUESTIONS_DATA.filter(q => {
     const matchSubj = selectedSubject === 'all' || q.subject === selectedSubject;
@@ -94,7 +96,7 @@ export const WrittenQuestionsView: React.FC<WrittenQuestionsViewProps> = ({
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 no-print">
           {/* Subject Pills */}
           <div className="flex items-center gap-1.5 overflow-x-auto text-xs font-semibold">
-            {(['all', 'Vật Lý', 'Hóa Học', 'Sinh Học'] as const).map(subj => (
+            {availableSubjects.map(subj => (
               <button
                 key={subj}
                 onClick={() => setSelectedSubject(subj)}
@@ -104,7 +106,7 @@ export const WrittenQuestionsView: React.FC<WrittenQuestionsViewProps> = ({
                     : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
                 }`}
               >
-                {subj === 'all' ? 'Tất Cả Phân Môn' : subj}
+                {subj === 'all' ? 'Tất Cả Các Môn' : subj}
               </button>
             ))}
           </div>

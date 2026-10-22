@@ -1,10 +1,11 @@
 export interface WrittenQuestion {
   id: string;
-  subject: 'Vật Lý' | 'Hóa Học' | 'Sinh Học';
+  subject: 'Vật Lý' | 'Hóa Học' | 'Sinh Học' | 'Toán 8' | 'Ngữ Văn 8' | string;
   type: 'short' | 'essay';
   question: string;
   answer: string;
   guide?: string;
+  topic?: string;
 }
 
 export const WRITTEN_QUESTIONS_DATA: WrittenQuestion[] = [
@@ -309,5 +310,90 @@ export const WRITTEN_QUESTIONS_DATA: WrittenQuestion[] = [
     type: 'essay',
     question: 'Câu 3: Một học sinh thường xuyên bỏ bữa sáng, ăn nhiều đồ ăn nhanh, ít ăn rau xanh và trái cây. Sau một thời gian, học sinh cảm thấy mệt mỏi và đôi khi bị táo bón.\na) Phân tích mối liên hệ giữa thói quen ăn uống trên với các biểu hiện của học sinh.\nb) Đề xuất một thực đơn cho bữa ăn chính bảo đảm đa dạng và cân đối.\nc) Giải thích vai trò của việc ăn đúng bữa, nhai kĩ, ăn đủ chất xơ và uống đủ nước.',
     answer: 'a) Mối liên hệ:\n- Bỏ bữa sáng làm cơ thể thiếu hụt glucose cung cấp cho não và cơ bắp sau một đêm dài, gây tụt đường huyết, uể oải, mệt mỏi, giảm khả năng tập trung.\n- Thức ăn nhanh nhiều dầu mỡ và chất bảo quản nhưng nghèo vitamin và khoáng chất.\n- Thiếu rau xanh và trái cây làm thiếu chất xơ và nước, phân bị khô cứng dẫn đến táo bón.\n\nb) Thực đơn một bữa ăn chính cân đối (Bữa trưa gợi ý):\n- Cơm trắng (cung cấp carbohydrate/bột đường).\n- Thịt nạc xào hoặc cá kho/luộc (cung cấp protein/chất đạm).\n- Canh rau ngót nấu tôm/thịt băm (cung cấp vitamin, chất xơ và nước).\n- Rau luộc (cải xanh hoặc súp lơ).\n- Tráng miệng: Chuối hoặc cam (bổ sung vitamin C, kali).\n\nc) Giải thích:\n- Ăn đúng bữa: Giúp dạ dày tiết dịch vị theo nhịp sinh học, phòng tránh viêm loét dạ dày.\n- Nhai kĩ: Nghiền nhỏ thức ăn, giúp enzyme amilaza tiêu hóa tinh bột tốt hơn và giảm gánh nặng cho dạ dày.\n- Đủ chất xơ: Kích thích nhu động ruột, tạo khuôn phân, phòng ngừa táo bón.\n- Uống đủ nước: Giúp hòa tan các chất dinh dưỡng, thúc đẩy trao đổi chất và làm mềm phân.'
+  },
+
+  // --- TOÁN 8: BÀI TẬP TỰ LUẬN ĐẠI SỐ & HÌNH HỌC (THCS BÁT TRÀNG) ---
+  {
+    id: 'toan-tl-1',
+    subject: 'Toán 8',
+    type: 'essay',
+    topic: 'Đại số: Đa thức E & F',
+    question: 'Bài 4: Cho hai đa thức:\nE = 3xyz - 3x² + 5xy - 1\nF = 5x² + xyz - 5xy + 3 - y\nTính E + F; E - F; F - E.',
+    answer: '1) Tính E + F:\nE + F = (3xyz - 3x² + 5xy - 1) + (5x² + xyz - 5xy + 3 - y)\n= (3xyz + xyz) + (-3x² + 5x²) + (5xy - 5xy) - y + (-1 + 3)\n= 4xyz + 2x² - y + 2\n\n2) Tính E - F:\nE - F = (3xyz - 3x² + 5xy - 1) - (5x² + xyz - 5xy + 3 - y)\n= 3xyz - 3x² + 5xy - 1 - 5x² - xyz + 5xy - 3 + y\n= 2xyz - 8x² + 10xy + y - 4\n\n3) Tính F - E:\nF - E = -(E - F) = -2xyz + 8x² - 10xy - y + 4.'
+  },
+  {
+    id: 'toan-tl-2',
+    subject: 'Toán 8',
+    type: 'essay',
+    topic: 'Đại số: Rút gọn và tìm x',
+    question: 'Bài 5: Cho biểu thức A = 2(3x + 1)(x - 1) - 3(2x - 3)(x - 4)\na) Rút gọn biểu thức A\nb) Tính giá trị của A tại x = -2\nc) Tìm x để A = 0.',
+    answer: 'a) Rút gọn A:\nTa có:\n2(3x + 1)(x - 1) = 2(3x² - 3x + x - 1) = 2(3x² - 2x - 1) = 6x² - 4x - 2\n3(2x - 3)(x - 4) = 3(2x² - 8x - 3x + 12) = 3(2x² - 11x + 12) = 6x² - 33x + 36\nDo đó:\nA = (6x² - 4x - 2) - (6x² - 33x + 36) = 6x² - 4x - 2 - 6x² + 33x - 36\n= 29x - 38\n\nb) Giá trị của A tại x = -2:\nA = 29.(-2) - 38 = -58 - 38 = -96\n\nc) Tìm x để A = 0:\n29x - 38 = 0 <=> 29x = 38 <=> x = 38/29.'
+  },
+  {
+    id: 'toan-tl-3',
+    subject: 'Toán 8',
+    type: 'essay',
+    topic: 'Đại số: Chứng minh không âm',
+    question: 'Bài 6: Cho P = A + B và Q = A - B với A = 5x² - 3xy + 7y², B = 6x² - 8xy + 9y².\na) Tính P và Q.\nb) Tính M = P - Q tại x = -1, y = -2.\nc) Cho N = 3x² - 16xy + 14y². Chứng minh T = M - N luôn không âm với mọi x, y.',
+    answer: 'a) Tính P và Q:\nP = A + B = (5x² - 3xy + 7y²) + (6x² - 8xy + 9y²) = 11x² - 11xy + 16y²\nQ = A - B = (5x² - 3xy + 7y²) - (6x² - 8xy + 9y²) = -x² + 5xy - 2y²\n\nb) M = P - Q = 2B = 2(6x² - 8xy + 9y²) = 12x² - 16xy + 18y²\nTại x = -1, y = -2: M = 12(-1)² - 16(-1)(-2) + 18(-2)² = 12 - 32 + 72 = 52.\n\nc) Chứng minh T = M - N ≥ 0:\nT = M - N = (12x² - 16xy + 18y²) - (3x² - 16xy + 14y²)\n= 9x² + 4y² = (3x)² + (2y)².\nVì (3x)² ≥ 0 và (2y)² ≥ 0 với mọi x, y nên T = (3x)² + (2y)² ≥ 0 với mọi x, y (đpcm).'
+  },
+  {
+    id: 'toan-tl-4',
+    subject: 'Toán 8',
+    type: 'essay',
+    topic: 'Hình học: Hình bình hành ABCD',
+    question: 'Bài 2: Cho hình bình hành ABCD. Gọi E là trung điểm AB, F là trung điểm CD.\na) Chứng minh tứ giác AECF là hình bình hành.\nb) AF cắt DE tại M, BF cắt CE tại N. Chứng minh tứ giác EMFN là hình bình hành.\nc) Chứng minh AC, EF, MN đồng quy.\nd) Tìm điều kiện của hình bình hành ABCD để AECF là hình thoi.',
+    answer: 'a) Tứ giác AECF có:\n- AB // CD (ABCD là hình bình hành) => AE // CF.\n- E, F là trung điểm AB, CD và AB = CD => AE = AB/2 = CD/2 = CF.\nTứ giác AECF có một cặp cạnh đối song song và bằng nhau nên là hình bình hành.\n\nb) Tứ giác EMFN là hình bình hành:\n- Vì AECF là hbh nên AF // CE => MF // EN.\n- Tương tự, chứng minh tứ giác EBFD là hình bình hành (EB // DF và EB = DF) => DE // BF => ME // NF.\nTứ giác EMFN có các cạnh đối song song nên là hình bình hành.\n\nc) AC, EF, MN đồng quy:\n- Trong hình bình hành AECF, hai đường chéo AC và EF cắt nhau tại trung điểm O của mỗi đường.\n- Trong hình bình hành EMFN, hai đường chéo EF và MN cắt nhau tại trung điểm của EF, tức là điểm O.\nVậy AC, EF, MN cùng đi qua điểm O (đồng quy tại O).\n\nd) Để AECF là hình thoi:\nHình bình hành AECF là hình thoi <=> AE = EC (hoặc AC ⊥ EF).\nKhi AE = EC mà AE = AB/2 => cần điều kiện cạnh AB = 2.BC (hoặc liên hệ góc).'
+  },
+
+  // --- NGỮ VĂN 8: ĐỌC HIỂU "BÊN BỜ THIÊN MẠC" & BÀI LÀM VĂN ---
+  {
+    id: 'van-tl-1',
+    subject: 'Ngữ Văn 8',
+    type: 'short',
+    topic: 'Đọc hiểu: Bên bờ Thiên Mạc',
+    question: 'Câu 1 (Đọc hiểu): Đoạn trích "Bên bờ Thiên Mạc" được viết theo thể loại nào và được kể bằng lời kể của ai?',
+    answer: '- Thể loại: Truyện lịch sử (tiểu thuyết lịch sử).\n- Người kể: Đoạn trích được kể theo ngôi thứ ba, bằng lời của người kể chuyện giấu mình (toàn tri), mang điểm nhìn khách quan nhưng giàu cảm xúc và trân trọng.'
+  },
+  {
+    id: 'van-tl-2',
+    subject: 'Ngữ Văn 8',
+    type: 'short',
+    topic: 'Đọc hiểu: Bên bờ Thiên Mạc',
+    question: 'Câu 2 (Đọc hiểu): Trong cuộc trò chuyện, ông lão người Xuân Đình đã có nhận xét thẳng thắn nào về Trần Bình Trọng? Tại sao nhận xét thẳng thắn của ông lão không làm cho Trần Bình Trọng giận?',
+    answer: '1) Nhận xét thẳng thắn của ông lão:\nÔng lão nhận xét: Tướng quân "chưa hiểu hết bụng dân đó thôi", và nhắc lại rằng các bô lão ở điện Diên Hồng đều là những người từng cầm giáo đánh giặc 27 năm trước (năm Đinh Tị 1257), khi ấy tướng quân mới chỉ được "ba, bốn tuổi chi đó".\n\n2) Vì sao tướng quân không giận:\nVì Trần Bình Trọng là một vị tướng đức độ, khiêm nhường, biết lắng nghe và quý trọng lời nói ngay thẳng. Ông thấu hiểu rằng lời nói của ông lão không hề có ý xấc xược, mà bắt nguồn từ lòng yêu nước tha thiết, sự thủy chung son sắt với vận mệnh dân tộc.'
+  },
+  {
+    id: 'van-tl-3',
+    subject: 'Ngữ Văn 8',
+    type: 'short',
+    topic: 'Đọc hiểu: Bên bờ Thiên Mạc',
+    question: 'Câu 3 (Đọc hiểu): Việc lặp lại liên tiếp các câu: “Đánh! Đánh! Đánh!” trong đoạn văn in đậm có ý nghĩa như thế nào?',
+    answer: '- Nghệ thuật: Sử dụng biện pháp điệp từ "Đánh" kết hợp thể câu cảm thán và dấu chấm than vang dội.\n- Ý nghĩa biểu đạt:\n+ Thể hiện khí thế sục sôi, ý chí quyết chiến ngút trời của tướng quân Trần Bình Trọng.\n+ Đại diện cho tiếng lòng, khát vọng độc lập cháy bỏng của toàn thể dân tộc Đại Việt trước họa xâm lăng: Tuyệt đối không đầu hàng, không thỏa hiệp.'
+  },
+  {
+    id: 'van-tl-4',
+    subject: 'Ngữ Văn 8',
+    type: 'essay',
+    topic: 'Đọc hiểu & Liên hệ bản thân',
+    question: 'Câu 4 (Đọc hiểu): Trong đoạn trích, Bảo Nghĩa hầu Trần Bình Trọng đã thể hiện lòng yêu nước và tinh thần trách nhiệm với đất nước. Em thấy mình cần làm gì để thể hiện lòng yêu nước và tinh thần trách nhiệm hiện nay?',
+    answer: 'Liên hệ thực tế học sinh ngày nay:\n1. Ra sức học tập, rèn luyện đạo đức để mai này đem tài trí xây dựng quê hương, đất nước giàu mạnh.\n2. Tự hào và gìn giữ truyền thống lịch sử vẻ vang, bản sắc văn hóa dân tộc (tìm hiểu lịch sử, bảo vệ di tích văn hóa quê hương Bát Tràng).\n3. Chấp hành tốt pháp luật, nội quy trường lớp, sống trung thực, đoàn kết giúp đỡ bạn bè.\n4. Tích cực tham gia các hoạt động xã hội bảo vệ môi trường, không lan truyền thông tin sai lệch trên không gian mạng.'
+  },
+  {
+    id: 'van-tl-5',
+    subject: 'Ngữ Văn 8',
+    type: 'essay',
+    topic: 'Tập làm văn: Viết đoạn văn 7 dòng',
+    question: 'Phần Viết - Câu 1: Viết đoạn văn (khoảng 7 dòng) nêu cảm nhận của em về nhân vật ông lão người Xuân Đình.',
+    answer: 'Đoạn văn tham khảo chuẩn 7 dòng:\nQua ngòi bút tài hoa của Hà Ân, nhân vật ông lão làng Xuân Đình hiện lên như biểu tượng cao đẹp cho lòng yêu nước và khí phách kiên cường của nhân dân Đại Việt thời Trần. Dù tuổi cao sức yếu, thân hình gầy guộc nhưng đôi mắt ông vẫn ánh lên vẻ tinh anh, khẳng khái cùng đôi bàn tay xăm chàm hai chữ "Sát Thát" ăn sâu vào máu thịt. Từng tham dự hội nghị Diên Hồng lịch sử, ông đại diện cho tiếng nói quật cường của triệu triệu người dân sẵn sàng hy sinh bảo vệ non sông. Lời nói thẳng thắn, chân tình với Bảo Nghĩa hầu thể hiện niềm tự hào và sự tin tưởng son sắt vào triều đình. Hình ảnh ông lão để lại trong lòng người đọc niềm xúc động và lòng tự hào sâu sắc về thế hệ cha anh thuở trước.'
+  },
+  {
+    id: 'van-tl-6',
+    subject: 'Ngữ Văn 8',
+    type: 'essay',
+    topic: 'Tập làm văn: Kể chuyến đi tham quan di tích lịch sử',
+    question: 'Phần Viết - Câu 2: Viết bài văn kể lại chuyến đi tham quan một di tích lịch sử đáng nhớ của em.',
+    answer: 'Dàn ý và Bài văn mẫu tham khảo: "Chuyến tham quan Đền Gióng - Sóc Sơn (hoặc Văn Miếu - Quốc Tử Giám / Di tích Đền Đô)":\n\n1. Mở bài: Giới thiệu mục đích, thời gian và địa điểm chuyến tham quan di tích lịch sử cùng thầy cô và bạn bè Lớp 8B.\n2. Thân bài:\n- Hành trình di chuyển và không khí háo hức trên chuyến xe.\n- Quang cảnh di tích nhìn từ xa và khi bước qua cổng tam quan cổ kính.\n- Những hiện vật, tượng đài, bia đá ghi dấu chiến công hiển hách của cha ông.\n- Lắng nghe lời thuyết minh đầy xúc động của hướng dẫn viên về tinh thần xả thân vì nước.\n- Hoạt động dâng hương tưởng niệm thiêng liêng của tập thể lớp.\n3. Kết bài: Cảm xúc tự hào, biết ơn sâu sắc đối với tiền nhân và lời hứa nỗ lực học tập để xứng đáng với truyền thống vẻ vang của dân tộc.'
   }
 ];
+

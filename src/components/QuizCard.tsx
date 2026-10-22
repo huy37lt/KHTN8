@@ -139,18 +139,20 @@ export const QuizCard: React.FC<QuizCardProps> = ({
             <Printer className="w-4 h-4" />
           </button>
 
-          {/* Delete */}
-          <button
-            onClick={() => {
-              if (window.confirm(`Bạn có chắc muốn xóa bộ đề "${quizSet.title}" không?`)) {
-                onDeleteSet(quizSet.id);
-              }
-            }}
-            title="Xóa bộ đề"
-            className="p-2 text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 rounded-lg hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors cursor-pointer"
-          >
-            <Trash2 className="w-4 h-4" />
-          </button>
+          {/* Delete only if custom set created by user, never delete official school sets */}
+          {!quizSet.isDefault && (
+            <button
+              onClick={() => {
+                if (window.confirm(`Bạn có chắc muốn xóa bộ đề "${quizSet.title}" không?`)) {
+                  onDeleteSet(quizSet.id);
+                }
+              }}
+              title="Xóa bộ đề do bạn tự tạo"
+              className="p-2 text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 rounded-lg hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors cursor-pointer"
+            >
+              <Trash2 className="w-4 h-4" />
+            </button>
+          )}
         </div>
       </div>
     </div>
