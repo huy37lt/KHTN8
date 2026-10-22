@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react';
 import { 
   Search, BookOpen, Sparkles, Filter, Plus, 
   RotateCcw, Trophy, CheckCircle2, AlertCircle, Share2, Printer,
-  Zap, Flame
+  Zap, Flame, FlaskConical
 } from 'lucide-react';
 import { QuizSet, Question, PracticeConfig, ExamResult, MistakeRecord } from './types/quiz';
 import { 
@@ -29,6 +29,10 @@ import { ImportExportModal } from './components/ImportExportModal';
 import { PrintSheetModal } from './components/PrintSheetModal';
 import { IntroGuideModal } from './components/IntroGuideModal';
 import { SpeedCheatSheetView } from './components/SpeedCheatSheetView';
+import { MindmapView } from './components/MindmapView';
+import { FlashcardsView } from './components/FlashcardsView';
+import { SmartSearchView } from './components/SmartSearchView';
+import { VirtualLabView } from './components/VirtualLabView';
 
 export default function App() {
   // Navigation & View State
@@ -301,128 +305,144 @@ export default function App() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
               
               {/* Hero Banner Section */}
-              <div className="bg-gradient-to-br from-emerald-900 via-slate-900 to-slate-950 rounded-3xl p-6 sm:p-10 text-white shadow-lg relative overflow-hidden">
-                <div className="relative z-10 max-w-3xl space-y-3">
-                  <div className="inline-flex items-center gap-2 text-xs font-semibold text-emerald-300 bg-emerald-950/80 border border-emerald-500/30 px-3 py-1 rounded-full flex-wrap">
-                    <Sparkles className="w-3.5 h-3.5" />
+              <div className="bg-gradient-to-br from-emerald-950 via-slate-900 to-indigo-950 rounded-3xl p-6 sm:p-10 text-white shadow-xl relative overflow-hidden border border-emerald-500/20">
+                <div className="relative z-10 max-w-4xl space-y-4">
+                  <div className="inline-flex items-center gap-2 text-xs font-bold text-emerald-300 bg-emerald-950/80 border border-emerald-500/40 px-3.5 py-1.5 rounded-full flex-wrap shadow-xs">
+                    <Sparkles className="w-4 h-4 text-amber-300" />
                     <span>TRƯỜNG THCS BÁT TRÀNG · Năm học 2026-2027</span>
                     <span aria-hidden="true">·</span>
-                    <span>Lớp 8B</span>
+                    <span className="text-amber-300 font-extrabold">LỚP 8B TRỌN BỘ 9 MÔN</span>
                   </div>
-                  <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight">
-                    Đề Cương Ôn Tập Giữa Học Kì I - Lớp 8B
+                  <h1 className="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
+                    Cổng Ôn Tập Đề Cương Giữa Học Kì I - Lớp 8B
                   </h1>
-                  <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl">
-                    Hệ thống trọn vẹn đề cương chính thức: KHTN 8 (Lý, Hóa, Sinh) · TOÁN 8 (Đại số & Hình học) · NGỮ VĂN 8 (Tiếng Việt & Bên bờ Thiên Mạc) có hướng dẫn giải chi tiết.
+                  <p className="text-sm sm:text-base text-slate-200 leading-relaxed max-w-3xl">
+                    Trọn vẹn 9 môn học chính thức: <strong>KHTN 8 (Lý, Hóa, Sinh) · Toán 8 · Ngữ Văn 8 · Tiếng Anh 8 · Lịch Sử & Địa Lí 8 · Tin Học 8 · Công Nghệ 8 · GDCD 8 · HĐTN & GDĐP</strong>. Tích hợp sơ đồ tư duy tương tác, thẻ nhớ 3D và tra cứu đáp án thông minh.
                   </p>
 
                   {/* Bright Quick Stat Counters */}
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1 text-xs">
-                    <div className="bg-white/10 backdrop-blur-xs border border-white/15 rounded-xl p-2.5 text-center">
-                      <div className="text-lg font-extrabold text-emerald-300 tabular-nums">3 Môn</div>
-                      <div className="text-[11px] text-slate-300">KHTN · Toán · Ngữ Văn</div>
+                    <div className="bg-white/10 backdrop-blur-xs border border-white/15 rounded-xl p-3 text-center">
+                      <div className="text-xl font-black text-emerald-300 tabular-nums">9 Môn Học</div>
+                      <div className="text-[11px] text-slate-300 font-medium">Toàn bộ đề cương Bát Tràng</div>
                     </div>
-                    <div className="bg-white/10 backdrop-blur-xs border border-white/15 rounded-xl p-2.5 text-center">
-                      <div className="text-lg font-extrabold text-amber-300 tabular-nums">10 Bộ Đề</div>
-                      <div className="text-[11px] text-slate-300">Luyện thi theo chuyên đề</div>
+                    <div className="bg-white/10 backdrop-blur-xs border border-white/15 rounded-xl p-3 text-center">
+                      <div className="text-xl font-black text-amber-300 tabular-nums">18+ Bộ Đề</div>
+                      <div className="text-[11px] text-slate-300 font-medium">Trắc nghiệm phân loại</div>
                     </div>
-                    <div className="bg-white/10 backdrop-blur-xs border border-white/15 rounded-xl p-2.5 text-center">
-                      <div className="text-lg font-extrabold text-sky-300 tabular-nums">120+</div>
-                      <div className="text-[11px] text-slate-300">Câu trắc nghiệm có lời giải</div>
+                    <div className="bg-white/10 backdrop-blur-xs border border-white/15 rounded-xl p-3 text-center">
+                      <div className="text-xl font-black text-sky-300 tabular-nums">220+ Câu</div>
+                      <div className="text-[11px] text-slate-300 font-medium">Trắc nghiệm có giải thích</div>
                     </div>
-                    <div className="bg-white/10 backdrop-blur-xs border border-white/15 rounded-xl p-2.5 text-center">
-                      <div className="text-lg font-extrabold text-purple-300 tabular-nums">49 Câu</div>
-                      <div className="text-[11px] text-slate-300">Tự luận & Đọc hiểu chi tiết</div>
+                    <div className="bg-white/10 backdrop-blur-xs border border-white/15 rounded-xl p-3 text-center">
+                      <div className="text-xl font-black text-purple-300 tabular-nums">60+ Câu</div>
+                      <div className="text-[11px] text-slate-300 font-medium">Tự luận, bài tập & tình huống</div>
                     </div>
                   </div>
 
-                  <div className="pt-2 flex items-center gap-3 flex-wrap">
+                  <div className="pt-2 flex items-center gap-2.5 flex-wrap">
                     <button
-                      onClick={() => {
-                        const tongHop = quizSets.find(s => s.id === 'khtn8-tong-hop-bat-trang') || quizSets[0];
-                        if (tongHop) handleOpenPracticeConfig(tongHop);
-                      }}
-                      className="inline-flex items-center gap-2 px-5 py-2.5 text-xs sm:text-sm font-bold text-slate-900 bg-white hover:bg-slate-100 rounded-xl shadow-md transition-all cursor-pointer"
+                      onClick={() => setCurrentTab('lab')}
+                      className="inline-flex items-center gap-2 px-5 py-2.5 text-xs sm:text-sm font-extrabold text-white bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 rounded-xl shadow-md transition-all cursor-pointer ring-2 ring-emerald-400/50"
                     >
-                      <Trophy className="w-4 h-4 text-emerald-700" />
-                      <span>Thi Thử KHTN 8 (55 Câu)</span>
+                      <FlaskConical className="w-4 h-4 text-emerald-200" />
+                      <span>🧪 Phòng Thí Nghiệm Ảo (Mô Phỏng Trực Quan)</span>
+                    </button>
+
+                    <button
+                      onClick={() => setCurrentTab('search')}
+                      className="inline-flex items-center gap-2 px-5 py-2.5 text-xs sm:text-sm font-extrabold text-slate-900 bg-amber-400 hover:bg-amber-300 rounded-xl shadow-md transition-all cursor-pointer"
+                    >
+                      <Search className="w-4 h-4 text-slate-900" />
+                      <span>🔍 Tra Cứu Thông Minh (Live Search)</span>
+                    </button>
+
+                    <button
+                      onClick={() => setCurrentTab('mindmap')}
+                      className="inline-flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-extrabold text-white bg-indigo-600 hover:bg-indigo-500 rounded-xl shadow-md transition-all cursor-pointer"
+                    >
+                      <span>🌳 Bản Đồ Tư Duy (Mindmap)</span>
+                    </button>
+
+                    <button
+                      onClick={() => setCurrentTab('flashcards')}
+                      className="inline-flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-extrabold text-white bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-400 hover:to-amber-500 rounded-xl shadow-md transition-all cursor-pointer"
+                    >
+                      <span>🃏 Thẻ Nhớ 3D (Active Recall)</span>
                     </button>
 
                     <button
                       onClick={() => setCurrentTab('speed')}
-                      className="inline-flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-500 hover:to-amber-500 rounded-xl shadow-md transition-all cursor-pointer"
+                      className="inline-flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold text-white bg-rose-600/90 hover:bg-rose-500 rounded-xl shadow-sm transition-all cursor-pointer"
                     >
                       <Flame className="w-4 h-4 text-amber-200" />
-                      <span>Bí Kíp 5 Phút (Lý-Hóa-Sinh-Toán-Văn)</span>
-                    </button>
-
-                    <button
-                      onClick={handleStartBlitz}
-                      className="inline-flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold text-white bg-amber-600/90 hover:bg-amber-500 border border-amber-400/40 rounded-xl shadow-sm transition-all cursor-pointer"
-                    >
-                      <Zap className="w-4 h-4 text-amber-200" />
-                      <span>Đấu Nhanh 10 Câu (3 Phút)</span>
+                      <span>🔥 Bí Kíp 5 Phút (Bẫy đề)</span>
                     </button>
 
                     <button
                       onClick={() => setCurrentTab('written')}
-                      className="inline-flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-semibold text-white bg-emerald-700/80 hover:bg-emerald-600 border border-emerald-500/40 rounded-xl transition-all cursor-pointer"
+                      className="inline-flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold text-white bg-emerald-700/80 hover:bg-emerald-600 border border-emerald-500/40 rounded-xl transition-all cursor-pointer"
                     >
                       <BookOpen className="w-4 h-4" />
-                      <span>Tự Luận & Đọc Hiểu (49 Câu)</span>
-                    </button>
-
-                    <button
-                      onClick={() => setIsIntroOpen(true)}
-                      className="inline-flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-semibold text-white bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 rounded-xl transition-all cursor-pointer"
-                    >
-                      <Sparkles className="w-4 h-4 text-amber-300" />
-                      <span>Hướng Dẫn & Giới Thiệu</span>
+                      <span>Tự Luận (60 Câu)</span>
                     </button>
                   </div>
                 </div>
               </div>
 
-              {/* Search & Subject Filter Bar */}
+              {/* Search & Subject Filter Bar with BIGGER subject text */}
               <div className="space-y-4">
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
-                  
                   {/* Search Input */}
-                  <div className="relative flex-1 max-w-md">
-                    <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+                  <div className="relative flex-1 max-w-xl">
+                    <Search className="w-5 h-5 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
                     <input
                       type="text"
-                      placeholder="Tìm kiếm môn học, chủ đề, khối lớp..."
+                      placeholder="Tìm kiếm môn học, bài thi, khái niệm, từ khóa..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full text-xs sm:text-sm pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-hidden focus:ring-1 focus:ring-emerald-600 shadow-xs"
+                      className="w-full text-sm sm:text-base pl-11 pr-24 py-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 shadow-sm"
                     />
+                    <button
+                      onClick={() => setCurrentTab('search')}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 px-2.5 py-1.5 text-xs font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950 hover:bg-emerald-200 rounded-lg transition-colors cursor-pointer"
+                    >
+                      Tra cứu sâu ➔
+                    </button>
                   </div>
 
                   {/* Actions right */}
                   <div className="flex items-center gap-2 self-end sm:self-auto text-xs text-slate-500 dark:text-slate-400">
-                    <span className="font-semibold text-slate-900 dark:text-white tabular-nums">
+                    <span className="font-bold text-slate-900 dark:text-white tabular-nums text-sm">
                       {filteredSets.length}
                     </span>
-                    <span>bộ đề sẵn sàng</span>
+                    <span>bộ đề sẵn sàng ôn luyện</span>
                   </div>
                 </div>
 
-                {/* Subject Filter Tabs (Interactive Segmented Control) */}
-                <div className="flex items-center gap-1.5 overflow-x-auto pb-1 text-xs">
-                  {subjectsList.map(subj => (
-                    <button
-                      key={subj}
-                      onClick={() => setSelectedSubject(subj)}
-                      className={`px-3.5 py-1.5 rounded-lg font-semibold whitespace-nowrap transition-colors cursor-pointer ${
-                        selectedSubject === subj
-                          ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-xs'
-                          : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
-                      }`}
-                    >
-                      {subj === 'all' ? 'Tất Cả Các Môn' : subj}
-                    </button>
-                  ))}
+                {/* Big Readable Subject Filter Tabs */}
+                <div className="space-y-2">
+                  <div className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                    DANH MỤC MÔN HỌC (Bấm để lọc đề thi):
+                  </div>
+                  <div className="flex items-center gap-2 overflow-x-auto pb-2 text-sm sm:text-base">
+                    {subjectsList.map(subj => {
+                      const isSelected = selectedSubject === subj;
+                      return (
+                        <button
+                          key={subj}
+                          onClick={() => setSelectedSubject(subj)}
+                          className={`px-4 py-2.5 rounded-xl font-extrabold whitespace-nowrap transition-all cursor-pointer border ${
+                            isSelected
+                              ? 'bg-emerald-600 text-white border-emerald-600 shadow-md scale-105'
+                              : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800'
+                          }`}
+                        >
+                          {subj === 'all' ? '🌟 Tất Cả Các Môn' : subj}
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
 
@@ -508,12 +528,39 @@ export default function App() {
             />
           )}
 
-          {/* Tab 5: Speed Cheat Sheet / Bí Kíp Cấp Tốc 5 Phút & 7 Bẫy Đề */}
+          {/* Tab 5: Speed Cheat Sheet / Bí Kíp Cấp Tốc 5 Phút & Bẫy Đề */}
           {currentTab === 'speed' && (
             <SpeedCheatSheetView
               onBackToLibrary={() => setCurrentTab('library')}
               onStartBlitz={handleStartBlitz}
             />
+          )}
+
+          {/* Tab 6: Smart Live Search / Tra Cứu Thông Minh */}
+          {currentTab === 'search' && (
+            <SmartSearchView
+              fontSize={fontSize}
+              initialQuery={searchQuery}
+            />
+          )}
+
+          {/* Tab 7: Interactive Mindmap / Bản Đồ Tư Duy */}
+          {currentTab === 'mindmap' && (
+            <MindmapView
+              fontSize={fontSize}
+            />
+          )}
+
+          {/* Tab 8: 3D Flashcards / Thẻ Ghi Nhớ */}
+          {currentTab === 'flashcards' && (
+            <FlashcardsView
+              fontSize={fontSize}
+            />
+          )}
+
+          {/* Tab: Virtual Lab / Phòng Thí Nghiệm Ảo */}
+          {currentTab === 'lab' && (
+            <VirtualLabView />
           )}
         </main>
 

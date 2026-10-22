@@ -1,3 +1,5 @@
+import { ADDITIONAL_WRITTEN_QUESTIONS } from './moreWrittenQuestions';
+
 export interface WrittenQuestion {
   id: string;
   subject: 'Vật Lý' | 'Hóa Học' | 'Sinh Học' | 'Toán 8' | 'Ngữ Văn 8' | string;
@@ -394,6 +396,7 @@ export const WRITTEN_QUESTIONS_DATA: WrittenQuestion[] = [
     topic: 'Tập làm văn: Kể chuyến đi tham quan di tích lịch sử',
     question: 'Phần Viết - Câu 2: Viết bài văn kể lại chuyến đi tham quan một di tích lịch sử đáng nhớ của em.',
     answer: 'Dàn ý và Bài văn mẫu tham khảo: "Chuyến tham quan Đền Gióng - Sóc Sơn (hoặc Văn Miếu - Quốc Tử Giám / Di tích Đền Đô)":\n\n1. Mở bài: Giới thiệu mục đích, thời gian và địa điểm chuyến tham quan di tích lịch sử cùng thầy cô và bạn bè Lớp 8B.\n2. Thân bài:\n- Hành trình di chuyển và không khí háo hức trên chuyến xe.\n- Quang cảnh di tích nhìn từ xa và khi bước qua cổng tam quan cổ kính.\n- Những hiện vật, tượng đài, bia đá ghi dấu chiến công hiển hách của cha ông.\n- Lắng nghe lời thuyết minh đầy xúc động của hướng dẫn viên về tinh thần xả thân vì nước.\n- Hoạt động dâng hương tưởng niệm thiêng liêng của tập thể lớp.\n3. Kết bài: Cảm xúc tự hào, biết ơn sâu sắc đối với tiền nhân và lời hứa nỗ lực học tập để xứng đáng với truyền thống vẻ vang của dân tộc.'
-  }
+  },
+  ...ADDITIONAL_WRITTEN_QUESTIONS
 ];
 

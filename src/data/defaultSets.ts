@@ -1,6 +1,12 @@
 import { QuizSet } from '../types/quiz';
 import { MATH_QUIZ_SETS } from './mathSets';
 import { LITERATURE_QUIZ_SETS } from './literatureSets';
+import { ENGLISH_QUIZ_SETS } from './englishSets';
+import { HISTORY_GEOGRAPHY_QUIZ_SETS } from './historyGeographySets';
+import { INFORMATICS_QUIZ_SETS } from './informaticsSets';
+import { CIVIC_QUIZ_SETS } from './civicSets';
+import { TECHNOLOGY_QUIZ_SETS } from './technologySets';
+import { EXPERIENTIAL_QUIZ_SETS } from './experientialSets';
 
 const KHTN_DEFAULT_SETS: QuizSet[] = [
   {
@@ -1733,6 +1739,12 @@ const KHTN_DEFAULT_SETS: QuizSet[] = [
 export const DEFAULT_QUIZ_SETS: QuizSet[] = [
   ...KHTN_DEFAULT_SETS,
   ...MATH_QUIZ_SETS,
-  ...LITERATURE_QUIZ_SETS
+  ...LITERATURE_QUIZ_SETS,
+  ...ENGLISH_QUIZ_SETS,
+  ...HISTORY_GEOGRAPHY_QUIZ_SETS,
+  ...INFORMATICS_QUIZ_SETS,
+  ...CIVIC_QUIZ_SETS,
+  ...TECHNOLOGY_QUIZ_SETS,
+  ...EXPERIENTIAL_QUIZ_SETS
 ];
 

@@ -24,7 +24,7 @@ export const QuizCard: React.FC<QuizCardProps> = ({
         icon: Atom,
         color: 'text-sky-600 dark:text-sky-400',
         bg: 'bg-sky-50 dark:bg-sky-950/50 border-sky-200 dark:border-sky-800/60',
-        badge: 'text-sky-800 dark:text-sky-300 bg-sky-100/70 dark:bg-sky-900/40'
+        badge: 'text-sky-800 dark:text-sky-300 bg-sky-100/90 dark:bg-sky-900/60 border border-sky-300/50'
       };
     }
     if (quizSet.subject.includes('Hóa Học')) {
@@ -32,7 +32,7 @@ export const QuizCard: React.FC<QuizCardProps> = ({
         icon: FlaskConical,
         color: 'text-emerald-600 dark:text-emerald-400',
         bg: 'bg-emerald-50 dark:bg-emerald-950/50 border-emerald-200 dark:border-emerald-800/60',
-        badge: 'text-emerald-800 dark:text-emerald-300 bg-emerald-100/70 dark:bg-emerald-900/40'
+        badge: 'text-emerald-800 dark:text-emerald-300 bg-emerald-100/90 dark:bg-emerald-900/60 border border-emerald-300/50'
       };
     }
     if (quizSet.subject.includes('Sinh Học')) {
@@ -40,7 +40,71 @@ export const QuizCard: React.FC<QuizCardProps> = ({
         icon: Dna,
         color: 'text-teal-600 dark:text-teal-400',
         bg: 'bg-teal-50 dark:bg-teal-950/50 border-teal-200 dark:border-teal-800/60',
-        badge: 'text-teal-800 dark:text-teal-300 bg-teal-100/70 dark:bg-teal-900/40'
+        badge: 'text-teal-800 dark:text-teal-300 bg-teal-100/90 dark:bg-teal-900/60 border border-teal-300/50'
+      };
+    }
+    if (quizSet.subject.includes('Toán')) {
+      return {
+        icon: Atom,
+        color: 'text-blue-600 dark:text-blue-400',
+        bg: 'bg-blue-50 dark:bg-blue-950/50 border-blue-200 dark:border-blue-800/60',
+        badge: 'text-blue-800 dark:text-blue-200 bg-blue-100/90 dark:bg-blue-900/60 border border-blue-300/50'
+      };
+    }
+    if (quizSet.subject.includes('Ngữ Văn')) {
+      return {
+        icon: BookOpen,
+        color: 'text-amber-600 dark:text-amber-400',
+        bg: 'bg-amber-50 dark:bg-amber-950/50 border-amber-200 dark:border-amber-800/60',
+        badge: 'text-amber-900 dark:text-amber-200 bg-amber-100/90 dark:bg-amber-900/60 border border-amber-300/50'
+      };
+    }
+    if (quizSet.subject.includes('Tiếng Anh')) {
+      return {
+        icon: BookOpen,
+        color: 'text-sky-600 dark:text-sky-400',
+        bg: 'bg-sky-50 dark:bg-sky-950/50 border-sky-200 dark:border-sky-800/60',
+        badge: 'text-sky-900 dark:text-sky-200 bg-sky-100/90 dark:bg-sky-900/60 border border-sky-300/50'
+      };
+    }
+    if (quizSet.subject.includes('Lịch Sử')) {
+      return {
+        icon: BookOpen,
+        color: 'text-orange-600 dark:text-orange-400',
+        bg: 'bg-orange-50 dark:bg-orange-950/50 border-orange-200 dark:border-orange-800/60',
+        badge: 'text-orange-900 dark:text-orange-200 bg-orange-100/90 dark:bg-orange-900/60 border border-orange-300/50'
+      };
+    }
+    if (quizSet.subject.includes('Tin Học')) {
+      return {
+        icon: Atom,
+        color: 'text-cyan-600 dark:text-cyan-400',
+        bg: 'bg-cyan-50 dark:bg-cyan-950/50 border-cyan-200 dark:border-cyan-800/60',
+        badge: 'text-cyan-900 dark:text-cyan-200 bg-cyan-100/90 dark:bg-cyan-900/60 border border-cyan-300/50'
+      };
+    }
+    if (quizSet.subject.includes('Công Nghệ')) {
+      return {
+        icon: FlaskConical,
+        color: 'text-amber-700 dark:text-amber-400',
+        bg: 'bg-amber-50 dark:bg-amber-950/50 border-amber-200 dark:border-amber-800/60',
+        badge: 'text-amber-950 dark:text-amber-200 bg-amber-100/90 dark:bg-amber-900/60 border border-amber-300/50'
+      };
+    }
+    if (quizSet.subject.includes('Giáo Dục Công Dân')) {
+      return {
+        icon: CheckSquare,
+        color: 'text-emerald-700 dark:text-emerald-400',
+        bg: 'bg-emerald-50 dark:bg-emerald-950/50 border-emerald-200 dark:border-emerald-800/60',
+        badge: 'text-emerald-900 dark:text-emerald-200 bg-emerald-100/90 dark:bg-emerald-900/60 border border-emerald-300/50'
+      };
+    }
+    if (quizSet.subject.includes('HĐTN')) {
+      return {
+        icon: Trophy,
+        color: 'text-purple-600 dark:text-purple-400',
+        bg: 'bg-purple-50 dark:bg-purple-950/50 border-purple-200 dark:border-purple-800/60',
+        badge: 'text-purple-900 dark:text-purple-200 bg-purple-100/90 dark:bg-purple-900/60 border border-purple-300/50'
       };
     }
     if (quizSet.subject.includes('Đúng / Sai')) {
@@ -48,14 +112,14 @@ export const QuizCard: React.FC<QuizCardProps> = ({
         icon: CheckSquare,
         color: 'text-purple-600 dark:text-purple-400',
         bg: 'bg-purple-50 dark:bg-purple-950/50 border-purple-200 dark:border-purple-800/60',
-        badge: 'text-purple-800 dark:text-purple-300 bg-purple-100/70 dark:bg-purple-900/40'
+        badge: 'text-purple-800 dark:text-purple-300 bg-purple-100/90 dark:bg-purple-900/60 border border-purple-300/50'
       };
     }
     return {
       icon: Trophy,
-      color: 'text-amber-600 dark:text-amber-400',
-      bg: 'bg-amber-50 dark:bg-amber-950/50 border-amber-200 dark:border-amber-800/60',
-      badge: 'text-amber-800 dark:text-amber-300 bg-amber-100/70 dark:bg-amber-900/40'
+      color: 'text-emerald-600 dark:text-emerald-400',
+      bg: 'bg-emerald-50 dark:bg-emerald-950/50 border-emerald-200 dark:border-emerald-800/60',
+      badge: 'text-emerald-800 dark:text-emerald-200 bg-emerald-100/90 dark:bg-emerald-900/60 border border-emerald-300/50'
     };
   };
 
@@ -65,17 +129,17 @@ export const QuizCard: React.FC<QuizCardProps> = ({
   return (
     <div className="group relative bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-2xl p-6 hover:border-emerald-500/60 dark:hover:border-emerald-500/60 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between">
       <div>
-        {/* Header Icon + Subject Badges */}
+        {/* Header Icon + Subject Badges with bigger, bolder font */}
         <div className="flex items-start justify-between gap-3 mb-4">
-          <div className={`w-11 h-11 rounded-xl flex items-center justify-center border ${visual.bg}`}>
+          <div className={`w-11 h-11 rounded-xl flex items-center justify-center border ${visual.bg} shrink-0`}>
             <IconComponent className={`w-5 h-5 ${visual.color}`} />
           </div>
 
           <div className="flex items-center gap-2 text-xs">
-            <span className={`px-2.5 py-0.5 rounded-full font-bold ${visual.badge}`}>
+            <span className={`text-sm sm:text-base font-extrabold px-3 py-1 rounded-xl shadow-xs tracking-wide ${visual.badge}`}>
               {quizSet.subject}
             </span>
-            <span className="text-slate-400 font-medium">
+            <span className="text-slate-400 font-semibold text-xs">
               {quizSet.grade}
             </span>
           </div>

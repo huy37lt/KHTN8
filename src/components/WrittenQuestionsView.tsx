@@ -94,19 +94,19 @@ export const WrittenQuestionsView: React.FC<WrittenQuestionsViewProps> = ({
 
         {/* Filters */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 no-print">
-          {/* Subject Pills */}
-          <div className="flex items-center gap-1.5 overflow-x-auto text-xs font-semibold">
+          {/* Subject Pills with bigger text */}
+          <div className="flex items-center gap-2 overflow-x-auto text-sm font-bold pb-1">
             {availableSubjects.map(subj => (
               <button
                 key={subj}
                 onClick={() => setSelectedSubject(subj)}
-                className={`px-3.5 py-1.5 rounded-lg whitespace-nowrap transition-colors cursor-pointer ${
+                className={`px-3.5 py-2 rounded-xl whitespace-nowrap transition-colors cursor-pointer border ${
                   selectedSubject === subj
-                    ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-xs'
-                    : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
+                    ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm'
+                    : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
                 }`}
               >
-                {subj === 'all' ? 'Tất Cả Các Môn' : subj}
+                {subj === 'all' ? 'Tất Cả Môn' : subj}
               </button>
             ))}
           </div>

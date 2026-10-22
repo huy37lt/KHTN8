@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ôn KHTN 8 bằng mô phỏng – Giữa học kì I</title>
+<style>
+:root{--paper:#FBFAF4;--grid:#DCE6F3;--ink:#17202e;--mut:#5b6472;--card:#fff;--bd:#cfd8e6;--c0:#1B4FB3;--c1:#137A5A;--c2:#B4442A;--ok:#17753b;--no:#c8372d;color-scheme:light dark}
+@media (prefers-color-scheme:dark){:root{--paper:#14171c;--grid:#1f2530;--ink:#e8ebf0;--mut:#9aa4b2;--card:#1c2029;--bd:#343c4a;--c0:#8fb2ff;--c1:#58d0a6;--c2:#ff9d80;--ok:#6bd68e;--no:#ff8a80}}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);background:var(--paper) linear-gradient(var(--grid) 1px,transparent 1px) 0 0/24px 24px,linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/24px 24px;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:760px;margin:0 auto;padding:20px 16px 40px 22px;border-left:2px solid var(--no);min-height:100vh}
+.t0{--ac:var(--c0)}.t1{--ac:var(--c1)}.t2{--ac:var(--c2)}
+h1{font:italic 700 26px/1.2 Georgia,"Times New Roman",serif;margin:0 0 4px}
+.sub{margin:0 0 16px;color:var(--mut);font-size:14px}
+.tabs{display:flex;gap:8px;margin:0 0 14px}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer;padding:9px 12px;border:1px solid var(--bd);border-radius:8px;background:var(--card)}
+button:hover{border-color:var(--ac)}button:focus-visible,input:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.tabs button{flex:1}.tabs .on,.on{border:2px solid var(--ac);color:var(--ac);font-weight:600}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px 16px;margin:0 0 14px}
+.card h2{font-size:15px;margin:0 0 10px;color:var(--ac)}
+.row{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start}.ctl{flex:1;min-width:230px}
+.sl{display:flex;align-items:center;gap:10px;margin:0 0 10px;font-size:14px}.sl span{min-width:92px}.sl input{flex:1;accent-color:var(--ac)}.sl output{min-width:62px;text-align:right;font-weight:600}
+.mc{background:var(--paper);border:1px solid var(--bd);border-radius:8px;padding:8px 12px;margin:0 0 8px}
+.mc span{display:block;font-size:12px;color:var(--mut)}.mc b{font:600 19px ui-monospace,Menlo,Consolas,monospace}
+.ch{display:flex;gap:6px;flex-wrap:wrap;align-items:stretch}.ch .mc{flex:1;min-width:110px;margin:0;text-align:center}.ar{align-self:center;text-align:center;font-size:12px;color:var(--mut);min-width:56px}
+.pr{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}.pr input[type=text]{width:130px;padding:8px;border:1px solid var(--bd);border-radius:8px;background:var(--card)}
+.msg{margin:6px 0;font-weight:600;color:var(--ac)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 12px}
+.opt{display:block;width:100%;text-align:left;margin:6px 0}.opt.ok{border:2px solid var(--ok)}.opt.no{border:2px solid var(--no)}
+.ex{background:var(--paper);border:1px solid var(--bd);border-radius:8px;padding:8px 12px;margin:8px 0}
+.q{font-weight:600;margin:4px 0}.qt{margin:0;font-size:12px;color:var(--mut)}
+.tx{fill:var(--mut);font-size:12px}.tp{fill:var(--ink);font-size:12px}
+select{font:inherit;padding:7px;border:1px solid var(--bd);border-radius:8px;background:var(--card);color:inherit}
+#po p,#po ul{margin:6px 0}#po li{margin:4px 0}
+.foot{font-size:12px;color:var(--mut);margin-top:18px}
+@media (prefers-reduced-motion:no-preference){#wa,#wr,#ob,#lv{transition:all .25s}}
+</style></head>
+<body><main id="M" class="t0">
+<h1>Ôn KHTN 8 bằng mô phỏng</h1>
+<p class="sub">Giữa học kì I · THCS Bát Tràng. Kéo, bấm, đoán trước rồi mới xem đáp án.</p>
+<div class="tabs" id="tabs"><button onclick="tab(0)">Vật lý</button><button onclick="tab(1)">Hóa học</button><button onclick="tab(2)">Sinh học</button></div>
+
+<section id="s0">
+<div class="card"><h2>Khối lượng riêng D = m ÷ V (Bài 13, 14)</h2>
+<div class="row">
+<svg width="250" viewBox="0 0 250 260" role="img" aria-label="Bình chia độ có vật rắn"><rect x="90" y="30" width="70" height="200" rx="4" fill="none" stroke="var(--mut)" stroke-width="1.5"/>
+<rect id="wa" x="91" y="170" width="68" height="60" fill="#378ADD" fill-opacity=".35"/><rect id="wr" x="91" y="150" width="68" height="20" fill="#EF9F27" fill-opacity=".6"/>
+<line x1="56" y1="170" x2="160" y2="170" stroke="var(--mut)" stroke-width=".8" stroke-dasharray="4 3"/><line id="lv" x1="56" y1="150" x2="160" y2="150" stroke="var(--ink)" stroke-width="1.2"/>
+<rect id="ob" x="105" y="200" width="30" height="30" rx="3" fill="#888780"/><g id="tk"></g>
+<text class="tx" x="6" y="174">V trước</text><text id="tv" class="tp" x="6" y="154">V sau</text></svg>
+<div class="ctl">
+<div class="sl"><span>Khối lượng m</span><input type="range" id="m" min="50" max="800" step="10" value="600"><output id="mo"></output></div>
+<div class="sl"><span>Thể tích V</span><input type="range" id="v" min="50" max="300" step="10" value="200"><output id="vo"></output></div>
+<label><input type="checkbox" id="pl" onchange="ly()"> Chế độ đoán trước</label>
+<div id="pw" hidden class="pr"><input type="text" id="pg" inputmode="decimal" placeholder="D = ? g/cm³" aria-label="D em đoán"><button onclick="lc()">Kiểm tra</button></div>
+<p class="msg" id="pr"></p>
+<div class="mc"><span>Thể tích vật = V sau − V trước</span><b id="vv"></b></div>
+<div class="mc"><span>Khối lượng riêng</span><b id="dd"></b></div>
+<div class="mc"><span>Thả vào nước (D = 1 g/cm³)</span><b id="fl"></b></div>
+</div></div></div>
+<div class="card" id="q0"></div>
+</section>
+
+<section id="s1" hidden>
+<div class="card"><h2>Con đường mol (Bài 3)</h2>
+<div class="chips" id="sub"></div>
+<div class="sl"><span>Khối lượng m</span><input type="range" id="g" min="1" max="200" step="1" value="64"><output id="go2"></output></div>
+<label><input type="checkbox" id="hl" onchange="hh()"> Chế độ đoán trước (đoán số mol)</label>
+<div id="hw" hidden class="pr"><input type="text" id="hg" inputmode="decimal" placeholder="n = ? mol" aria-label="n em đoán"><button onclick="hc()">Kiểm tra</button></div>
+<p class="msg" id="hr"></p>
+<div class="ch" style="margin-top:8px"><div class="mc"><span>Khối lượng</span><b id="c1"></b></div><div class="ar">÷ M<br><span id="mm"></span></div><div class="mc"><span>Số mol n</span><b id="c2"></b></div><div class="ar">× 24,79</div><div class="mc"><span>Thể tích khí (đkc)</span><b id="c3"></b></div></div>
+<div class="ch" style="margin-top:8px"><div class="ar" style="flex:1;text-align:left;min-width:0">Từ n, nhân 6,022×10²³ để ra số hạt</div><div class="mc" style="flex:2"><span>Số hạt</span><b id="c4"></b></div></div></div>
+
+<div class="card"><h2>Giải bài theo PTHH từng bước (Bài 5, 6)</h2>
+<div class="chips"><button onclick="pre(2,2,9.6,100)">Tự luận bài 1</button><button onclick="pre(0,0,2.4,100)">Tự luận bài 2</button><button onclick="pre(1,0,5.4,100)">Tự luận bài 3</button></div>
+<div class="pr"><select id="rs" onchange="rch()" aria-label="Phản ứng"></select><span>Đã biết</span><select id="ks" onchange="px()" aria-label="Chất đã biết"></select><input type="text" id="pm" inputmode="decimal" value="2,4" oninput="px()" aria-label="Khối lượng" style="width:84px;padding:7px;border:1px solid var(--bd);border-radius:8px;background:var(--card)"><span>gam</span></div>
+<div class="pr" id="pvw"><span>Thể tích dung dịch HCl</span><input type="text" id="pv" inputmode="decimal" value="100" oninput="px()" aria-label="Thể tích HCl" style="width:70px;padding:7px;border:1px solid var(--bd);border-radius:8px;background:var(--card)"><span>mL</span></div>
+<div id="po"></div></div>
+<div class="card" id="q1"></div>
+</section>
+
+<section id="s2" hidden>
+<div class="card"><h2>Ống tiêu hóa (Bài 32)</h2>
+<div class="row">
+<svg width="230" viewBox="0 0 230 250" role="img" aria-label="Sơ đồ ống tiêu hóa">
+<ellipse id="o0" cx="100" cy="24" rx="34" ry="16" onclick="so(0)" style="cursor:pointer"/><rect id="o1" x="92" y="40" width="16" height="50" rx="6" onclick="so(1)" style="cursor:pointer"/>
+<path id="o2" d="M86 94 Q60 106 68 141 Q82 171 115 161 Q138 146 130 116 Q122 94 108 94 Z" onclick="so(2)" style="cursor:pointer"/>
+<path id="o4" d="M52 238 V178 Q52 168 62 168 H176 Q186 168 186 178 V238" fill="none" stroke="#D85A30" stroke-linecap="round" onclick="so(4)" style="cursor:pointer"/>
+<path id="o3" d="M90 182 H166 Q176 182 166 195 H74 Q64 195 74 208 H166 Q176 208 166 221 H90" fill="none" stroke="#993C1D" stroke-linecap="round" onclick="so(3)" style="cursor:pointer"/></svg>
+<div class="ctl" id="sb"></div></div></div>
+<div class="card" id="q2"></div>
+</section>
+<p class="foot">Theo đề cương giữa HK1 KHTN 8, THCS Bát Tràng. Điều kiện chuẩn (đkc): 25 °C, 1 bar, 1 mol khí = 24,79 lít.</p>
+</main>
+<script>
+var $=function(i){return document.getElementById(i)};
+function f(x,d){return x.toFixed(d).replace('.',',')}
+function nm(x){return String(parseFloat(x.toFixed(4))).replace('.',',')}
+function num(s){return parseFloat(String(s).replace(',','.'))}
+function tab(i){$('M').className='t'+i;for(var k=0;k<3;k++){$('s'+k).hidden=k!=i;$('tabs').children[k].className=k==i?'on':''}}
+
+var tk='';for(var i=0;i<=500;i+=100){var y=230-i*.4;tk+='<line x1="90" y1="'+y+'" x2="100" y2="'+y+'" stroke="var(--mut)" stroke-width=".8"/><text class="tx" x="166" y="'+(y+4)+'">'+i+'</text>'}$('tk').innerHTML=tk;
+function ly(){var m=+$('m').value,v=+$('v').value,b=150,a=b+v,yb=230-b*.4,ya=230-a*.4,d=m/v,p=$('pl').checked;
+$('wa').setAttribute('y',yb);$('wa').setAttribute('height',230-yb);$('wr').setAttribute('y',ya);$('wr').setAttribute('height',yb-ya);
+$('lv').setAttribute('y1',ya);$('lv').setAttribute('y2',ya);$('tv').setAttribute('y',ya+4);
+var sz=8+Math.sqrt(v)*2.1,o=$('ob');o.setAttribute('width',sz);o.setAttribute('height',sz);o.setAttribute('x',125-sz/2);o.setAttribute('y',230-sz);
+$('mo').textContent=m+' g';$('vo').textContent=v+' cm³';$('vv').textContent=a+' − '+b+' = '+v+' mL';
+$('pw').hidden=!p;$('pr').textContent='';
+$('dd').textContent=p?'D = ? (hãy đoán)':f(d,2)+' g/cm³ = '+Math.round(d*1000)+' kg/m³';
+$('fl').textContent=p?'?':(d>1?'Chìm (D > 1)':d<1?'Nổi (D < 1)':'Lơ lửng (D = 1)')}
+function lc(){var m=+$('m').value,v=+$('v').value,d=m/v,g=num($('pg').value);
+if(isNaN(g)){$('pr').textContent='Nhập số em đoán trước đã.';return}
+$('pr').textContent=Math.abs(g-d)/d<=.05?'Đúng rồi. D = m ÷ V = '+m+' ÷ '+v+' = '+f(d,2)+' g/cm³ = '+Math.round(d*1000)+' kg/m³. Vật '+(d>1?'chìm':d<1?'nổi':'lơ lửng')+' trong nước.':'Chưa đúng. Nhớ D = m ÷ V rồi thử lại.'}
+$('m').oninput=ly;$('v').oninput=ly;
+
+var CH=[['O₂',32,1],['CO₂',44,1],['H₂',2,1],['H₂O',18,0],['NaCl',58.5,0]],cs=0,SUP='⁰¹²³⁴⁵⁶⁷⁸⁹';
+CH.forEach(function(c,i){var b=document.createElement('button');b.textContent=c[0];b.onclick=function(){cs=i;hh()};$('sub').appendChild(b)});
+function sup(e){return String(e).split('').map(function(c){return SUP[c]}).join('')}
+function hh(){var g=+$('g').value,c=CH[cs],n=g/c[1],p=$('hl').checked;
+for(var i=0;i<CH.length;i++)$('sub').children[i].className=i==cs?'on':'';
+$('hw').hidden=!p;$('hr').textContent='';$('go2').textContent=g+' g';$('mm').textContent=c[1]+' g/mol';$('c1').textContent=g+' g';
+$('c2').textContent=p?'?':f(n,3)+' mol';$('c3').textContent=p?'?':(c[2]?f(n*24.79,2)+' lít':'Không phải chất khí');
+var h=n*6.022e23,e=Math.floor(Math.log10(h));$('c4').textContent=p?'?':f(h/Math.pow(10,e),2)+'×10'+sup(e)+' phân tử'}
+function hc(){var g=+$('g').value,c=CH[cs],n=g/c[1],x=num($('hg').value);
+if(isNaN(x)){$('hr').textContent='Nhập số em đoán trước đã.';return}
+$('hr').textContent=Math.abs(x-n)/n<=.03?'Đúng rồi. n = m ÷ M = '+g+' ÷ '+c[1]+' = '+nm(n)+' mol.':'Chưa đúng. Nhớ n = m ÷ M, với M('+c[0]+') = '+c[1]+' g/mol.'}
+$('g').oninput=hh;
+
+var R=[{n:'Mg + 2HCl → MgCl₂ + H₂',s:[['Mg',24,1],['HCl',36.5,2],['MgCl₂',95,1],['H₂',2,1,1]]},
+{n:'4Al + 3O₂ → 2Al₂O₃',s:[['Al',27,4],['O₂',32,3,1],['Al₂O₃',102,2]]},
+{n:'2KClO₃ → 2KCl + 3O₂',s:[['KClO₃',122.5,2],['KCl',74.5,2],['O₂',32,3,1]]},
+{n:'4P + 5O₂ → 2P₂O₅',s:[['P',31,4],['O₂',32,5,1],['P₂O₅',142,2]]}];
+$('rs').innerHTML=R.map(function(r,i){return '<option value="'+i+'">'+r.n+'</option>'}).join('');
+function rch(){var r=R[+$('rs').value];$('ks').innerHTML=r.s.map(function(s,i){return '<option value="'+i+'">'+s[0]+'</option>'}).join('');px()}
+function px(){var r=R[+$('rs').value],k=r.s[+$('ks').value||0],g=num($('pm').value),h='';
+var hs=r.s.filter(function(s){return s[0]=='HCl'})[0];$('pvw').hidden=!hs;
+if(!(g>0)){$('po').innerHTML='<p>Nhập khối lượng lớn hơn 0.</p>';return}
+var n=g/k[1];
+h+='<p><b>Bước 1.</b> Đổi ra mol: n('+k[0]+') = '+nm(g)+' ÷ '+k[1]+' = '+nm(n)+' mol</p><p><b>Bước 2.</b> Lập tỉ lệ mol theo hệ số của PTHH:</p><ul>';
+r.s.forEach(function(s){if(s===k)return;var y=n*s[2]/k[2];h+='<li>n('+s[0]+') = '+nm(n)+' × '+s[2]+'/'+k[2]+' = '+nm(y)+' mol → m = '+nm(y*s[1])+' g'+(s[3]?', V = '+nm(y*24.79)+' lít (đkc)':'')+'</li>'});
+h+='</ul>';var v=num($('pv').value);
+if(hs&&v>0){var nh=n*hs[2]/k[2];h+='<p><b>Bước 3.</b> CM(HCl) = '+nm(nh)+' ÷ '+nm(v/1000)+' = '+nm(nh/(v/1000))+' M</p>'}
+$('po').innerHTML=h}
+function pre(i,ki,g,v){$('rs').value=i;rch();$('ks').value=ki;$('pm').value=String(g).replace('.',',');$('pv').value=v;px()}
+
+var OT=['Miệng: răng nhai nghiền thức ăn (cơ học), nước bọt bắt đầu biến đổi tinh bột (hóa học).','Thực quản: co bóp đẩy thức ăn xuống dạ dày.','Dạ dày: co bóp nhào trộn thức ăn, dịch vị biến đổi protein.','Ruột non: biến đổi mạnh nhất và hấp thụ phần lớn chất dinh dưỡng vào máu.','Ruột già: hấp thụ nước, tạo và đẩy phân ra ngoài.'],
+NM=['Miệng','Thực quản','Dạ dày','Ruột non','Ruột già'],
+FN=[['Hấp thụ phần lớn chất dinh dưỡng vào máu',3],['Hấp thụ nước và tạo phân',4],['Co bóp đẩy thức ăn xuống dạ dày',1],['Nhào trộn thức ăn với dịch vị',2],['Nhai, nghiền nhỏ thức ăn',0]],ch=-1,sc=0,tot=0;
+$('sb').innerHTML=NM.map(function(n,i){return '<button class="opt" onclick="so('+i+')">'+n+'</button>'}).join('')+'<button onclick="chal()" style="margin:8px 0">Thử thách: đoán cơ quan</button><p class="msg" id="sc"></p><div class="mc"><span id="ot"></span></div>';
+function hl(i){for(var k=0;k<5;k++){var e=$('o'+k),on=k==i;
+if(k<3){e.setAttribute('fill','#D85A30');e.setAttribute('fill-opacity',on?.85:.3);e.setAttribute('stroke','#D85A30')}
+else{e.setAttribute('stroke-opacity',on?1:.4);e.setAttribute('stroke-width',k==3?(on?11:8):(on?14:10))}}
+for(var j=0;j<5;j++)$('sb').children[j].className='opt'+(j==i?' on':'')}
+function chal(){var n;do{n=Math.floor(Math.random()*5)}while(n==ch);ch=n;hl(-1);$('ot').textContent='Cơ quan nào: '+FN[ch][0]+'?'}
+function so(i){if(ch>=0){var t=FN[ch][1];tot++;if(i==t)sc++;$('sc').textContent='Điểm: '+sc+'/'+tot;$('ot').textContent=(i==t?'Đúng. ':'Chưa đúng, đó là '+NM[t].toLowerCase()+'. ')+OT[t];ch=-1;hl(t)}else{hl(i);$('ot').textContent=OT[i]}}
+
+var QZ=[[
+{q:'Vật có khối lượng 600 g, thể tích 200 cm³. Khối lượng riêng của vật là',o:['0,3 g/cm³','3 g/cm³','30 g/cm³','120 000 g/cm³'],a:1,e:'D = 600 ÷ 200 = 3 g/cm³.',s:[600,200]},
+{q:'Chất lỏng có thể tích 100 cm³ và khối lượng 80 g. Khối lượng riêng là',o:['0,8 g/cm³','1,25 g/cm³','80 g/cm³','8 000 g/cm³'],a:0,e:'D = 80 ÷ 100 = 0,8 g/cm³, nhỏ hơn nước nên nổi.',s:[80,100]},
+{q:'Hai khối cùng một chất, khối A có thể tích gấp đôi khối B. Kết luận đúng là',o:['D của A gấp đôi B','D của A bằng nửa B','D của hai khối bằng nhau','Không so sánh được'],a:2,e:'D là đặc trưng của chất. Thử trong mô phỏng: 300 g với 100 cm³, rồi 600 g với 200 cm³, D vẫn là 3.'}],
+[{q:'64 g khí O₂ ở đkc có thể tích là',o:['22,4 lít','24,79 lít','49,58 lít','44,8 lít'],a:2,e:'n = 64 ÷ 32 = 2 mol; V = 2 × 24,79 = 49,58 lít.',s:[0,64]},
+{q:'Khí X có tỉ khối so với H₂ bằng 22. X có thể là',o:['NO₂','CO₂','NH₃','NO'],a:1,e:'M(X) = 22 × 2 = 44 g/mol, trùng với CO₂ (12 + 32).',s:[1,44]},
+{q:'Ở đkc, 1 mol khí bất kì chiếm thể tích',o:['24,97 lít','27,94 lít','24,79 lít','27,49 lít'],a:2,e:'Nhớ 24,79 lít. Thử H₂ 2 g: ra đúng 1 mol và 24,79 lít.',s:[2,2]}],
+[{q:'Cơ quan nào hấp thụ phần lớn chất dinh dưỡng?',o:['Miệng','Thực quản','Ruột non','Dạ dày'],a:2,e:'Ruột non hấp thụ phần lớn chất dinh dưỡng vào máu.',s:[3]},
+{q:'Vai trò chính của ruột già là',o:['Tiêu hóa protein','Hấp thụ nước và tạo phân','Hấp thụ phần lớn chất dinh dưỡng','Nghiền nhỏ thức ăn'],a:1,e:'Ruột già hút nước và tạo phân.',s:[4]},
+{q:'Thực quản có vai trò',o:['Hấp thụ chất dinh dưỡng','Vận chuyển thức ăn xuống dạ dày','Tiết dịch vị','Tạo phân'],a:1,e:'Thực quản co bóp đẩy thức ăn xuống dạ dày.',s:[1]}]],qi=[0,0,0],qv=[-1,-1,-1];
+function rq(t){var q=QZ[t][qi[t]],a=qv[t],h='<h2>Câu hỏi trong đề cương</h2><p class="qt">Câu '+(qi[t]+1)+'/'+QZ[t].length+'</p><p class="q">'+q.q+'</p>';
+q.o.forEach(function(o,j){h+='<button class="opt'+(a<0?'':j==q.a?' ok':j==a?' no':'')+'"'+(a<0?' onclick="qk('+t+','+j+')"':' disabled')+'>'+'ABCD'[j]+'. '+o+'</button>'});
+if(a>=0){h+='<p class="ex">'+(a==q.a?'Chính xác. ':'Chưa đúng. ')+q.e+'</p>';if(q.s)h+='<button onclick="qs('+t+')">Đặt mô phỏng theo câu này</button> ';h+='<button onclick="qn('+t+')">Câu tiếp</button>'}
+$('q'+t).innerHTML=h}
+function qk(t,j){qv[t]=j;rq(t)}function qn(t){qi[t]=(qi[t]+1)%QZ[t].length;qv[t]=-1;rq(t)}
+function qs(t){var s=QZ[t][qi[t]].s;if(t==0){$('pl').checked=false;$('m').value=s[0];$('v').value=s[1];ly()}else if(t==1){$('hl').checked=false;cs=s[0];$('g').value=s[1];hh()}else{ch=-1;hl(s[0]);$('ot').textContent=OT[s[0]]}$('s'+t).firstElementChild.scrollIntoView({behavior:'smooth'})}
+ly();hh();rch();pre(0,0,2.4,100);so(3);rq(0);rq(1);rq(2);tab(0);
+</script></body></html>
