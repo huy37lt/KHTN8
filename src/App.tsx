@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react';
 import { 
   Search, BookOpen, Sparkles, Filter, Plus, 
   RotateCcw, Trophy, CheckCircle2, AlertCircle, Share2, Printer,
-  Zap, Flame, FlaskConical
+  Zap, Flame, FlaskConical, GraduationCap, Network, Layers
 } from 'lucide-react';
 import { QuizSet, Question, PracticeConfig, ExamResult, MistakeRecord } from './types/quiz';
 import { 
@@ -304,87 +304,103 @@ export default function App() {
           {currentTab === 'library' && (
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
               
-              {/* Hero Banner Section */}
-              <div className="bg-gradient-to-br from-emerald-950 via-slate-900 to-indigo-950 rounded-3xl p-6 sm:p-10 text-white shadow-xl relative overflow-hidden border border-emerald-500/20">
-                <div className="relative z-10 max-w-4xl space-y-4">
-                  <div className="inline-flex items-center gap-2 text-xs font-bold text-emerald-300 bg-emerald-950/80 border border-emerald-500/40 px-3.5 py-1.5 rounded-full flex-wrap shadow-xs">
-                    <Sparkles className="w-4 h-4 text-amber-300" />
-                    <span>TRƯỜNG THCS BÁT TRÀNG · Năm học 2026-2027</span>
-                    <span aria-hidden="true">·</span>
-                    <span className="text-amber-300 font-extrabold">LỚP 8B TRỌN BỘ 9 MÔN</span>
-                  </div>
-                  <h1 className="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
-                    Cổng Ôn Tập Đề Cương Giữa Học Kì I - Lớp 8B
-                  </h1>
-                  <p className="text-sm sm:text-base text-slate-200 leading-relaxed max-w-3xl">
-                    Trọn vẹn 9 môn học chính thức: <strong>KHTN 8 (Lý, Hóa, Sinh) · Toán 8 · Ngữ Văn 8 · Tiếng Anh 8 · Lịch Sử & Địa Lí 8 · Tin Học 8 · Công Nghệ 8 · GDCD 8 · HĐTN & GDĐP</strong>. Tích hợp sơ đồ tư duy tương tác, thẻ nhớ 3D và tra cứu đáp án thông minh.
-                  </p>
+              {/* Academic University-Style Hero Banner */}
+              <div className="bg-white dark:bg-slate-900 rounded-2xl sm:rounded-3xl p-6 sm:p-10 border border-slate-200/90 dark:border-slate-800 shadow-sm relative overflow-hidden">
+                {/* Subtle decorative background ambient glow */}
+                <div className="pointer-events-none absolute -right-24 -top-24 w-96 h-96 bg-emerald-100/50 dark:bg-emerald-950/20 rounded-full blur-3xl" />
+                <div className="pointer-events-none absolute right-1/3 -bottom-24 w-80 h-80 bg-slate-100/60 dark:bg-slate-800/20 rounded-full blur-3xl" />
 
-                  {/* Bright Quick Stat Counters */}
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1 text-xs">
-                    <div className="bg-white/10 backdrop-blur-xs border border-white/15 rounded-xl p-3 text-center">
-                      <div className="text-xl font-black text-emerald-300 tabular-nums">9 Môn Học</div>
-                      <div className="text-[11px] text-slate-300 font-medium">Toàn bộ đề cương Bát Tràng</div>
-                    </div>
-                    <div className="bg-white/10 backdrop-blur-xs border border-white/15 rounded-xl p-3 text-center">
-                      <div className="text-xl font-black text-amber-300 tabular-nums">18+ Bộ Đề</div>
-                      <div className="text-[11px] text-slate-300 font-medium">Trắc nghiệm phân loại</div>
-                    </div>
-                    <div className="bg-white/10 backdrop-blur-xs border border-white/15 rounded-xl p-3 text-center">
-                      <div className="text-xl font-black text-sky-300 tabular-nums">220+ Câu</div>
-                      <div className="text-[11px] text-slate-300 font-medium">Trắc nghiệm có giải thích</div>
-                    </div>
-                    <div className="bg-white/10 backdrop-blur-xs border border-white/15 rounded-xl p-3 text-center">
-                      <div className="text-xl font-black text-purple-300 tabular-nums">60+ Câu</div>
-                      <div className="text-[11px] text-slate-300 font-medium">Tự luận, bài tập & tình huống</div>
-                    </div>
+                <div className="relative z-10 max-w-4xl space-y-5">
+                  {/* Academic Crest Badge */}
+                  <div className="inline-flex items-center gap-2 text-xs font-semibold text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 px-3.5 py-1.5 rounded-full flex-wrap shadow-2xs">
+                    <GraduationCap className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                    <span>TRƯỜNG THCS BÁT TRÀNG · HỌC KỲ I · NIÊN KHÓA 2026 - 2027</span>
+                    <span aria-hidden="true" className="text-slate-300 dark:text-slate-600">|</span>
+                    <span className="text-emerald-700 dark:text-emerald-400 font-bold">LỚP 8B CHÍNH KHÓA</span>
                   </div>
 
-                  <div className="pt-2 flex items-center gap-2.5 flex-wrap">
+                  {/* Title & Subtitle */}
+                  <div>
+                    <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+                      Hệ Thống Học Liệu Số & Đề Cương Ôn Thi Giữa Kì I
+                    </h1>
+                    <p className="mt-2 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">
+                      Cổng học tập chuẩn hóa dành cho học sinh Lớp 8B — Tổng hợp toàn diện 9 môn học chính khóa: <strong>KHTN 8 (Lý, Hóa, Sinh) · Toán 8 · Ngữ Văn 8 · Tiếng Anh 8 · Lịch Sử & Địa Lí 8 · Tin Học 8 · Công Nghệ 8 · GDCD 8 · HĐTN & GDĐP</strong>. Tích hợp phòng thí nghiệm mô phỏng, bản đồ tư duy và tra cứu nhanh.
+                    </p>
+                  </div>
+
+                  {/* Clean Academic Metric Cards */}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+                    <div className="bg-slate-50/80 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/60 rounded-xl p-3.5 text-center">
+                      <div className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tabular-nums">9 Môn Học</div>
+                      <div className="text-xs text-slate-500 dark:text-slate-400 font-medium mt-0.5">Toàn bộ đề cương Bát Tràng</div>
+                    </div>
+                    <div className="bg-slate-50/80 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/60 rounded-xl p-3.5 text-center">
+                      <div className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tabular-nums">18+ Bộ Đề</div>
+                      <div className="text-xs text-slate-500 dark:text-slate-400 font-medium mt-0.5">Trắc nghiệm phân loại chuẩn</div>
+                    </div>
+                    <div className="bg-slate-50/80 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/60 rounded-xl p-3.5 text-center">
+                      <div className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tabular-nums">220+ Câu</div>
+                      <div className="text-xs text-slate-500 dark:text-slate-400 font-medium mt-0.5">Trắc nghiệm có giải thích chi tiết</div>
+                    </div>
+                    <div className="bg-slate-50/80 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/60 rounded-xl p-3.5 text-center">
+                      <div className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tabular-nums">60+ Bài Tự Luận</div>
+                      <div className="text-xs text-slate-500 dark:text-slate-400 font-medium mt-0.5">Định lượng & vận dụng thực tế</div>
+                    </div>
+                  </div>
+
+                  {/* Refined Action Area */}
+                  <div className="pt-2 flex flex-col sm:flex-row sm:items-center gap-3">
                     <button
                       onClick={() => setCurrentTab('lab')}
-                      className="inline-flex items-center gap-2 px-5 py-2.5 text-xs sm:text-sm font-extrabold text-white bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 rounded-xl shadow-md transition-all cursor-pointer ring-2 ring-emerald-400/50"
+                      className="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-bold text-white bg-slate-900 hover:bg-slate-800 dark:bg-emerald-600 dark:hover:bg-emerald-500 rounded-xl shadow-xs transition-colors cursor-pointer"
                     >
-                      <FlaskConical className="w-4 h-4 text-emerald-200" />
-                      <span>🧪 Phòng Thí Nghiệm Ảo (Mô Phỏng Trực Quan)</span>
+                      <FlaskConical className="w-4 h-4 text-emerald-400 dark:text-white" />
+                      <span>Phòng Thí Nghiệm Ảo (Mô Phỏng Trực Quan)</span>
+                      <span className="px-1.5 py-0.5 rounded text-[10px] font-black uppercase bg-emerald-500/20 text-emerald-300 dark:bg-white/20 dark:text-white">
+                        Mới
+                      </span>
                     </button>
 
                     <button
                       onClick={() => setCurrentTab('search')}
-                      className="inline-flex items-center gap-2 px-5 py-2.5 text-xs sm:text-sm font-extrabold text-slate-900 bg-amber-400 hover:bg-amber-300 rounded-xl shadow-md transition-all cursor-pointer"
+                      className="inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-semibold text-slate-800 dark:text-slate-100 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/80 border border-slate-300 dark:border-slate-700 rounded-xl transition-colors cursor-pointer shadow-2xs"
                     >
-                      <Search className="w-4 h-4 text-slate-900" />
-                      <span>🔍 Tra Cứu Thông Minh (Live Search)</span>
+                      <Search className="w-4 h-4 text-slate-500" />
+                      <span>Tra Cứu Nhanh Câu Hỏi & Đáp Án</span>
                     </button>
+                  </div>
 
+                  {/* Quick Feature Jump Links */}
+                  <div className="flex items-center gap-2 flex-wrap pt-1 text-xs">
+                    <span className="text-slate-500 dark:text-slate-400 font-medium">Tiện ích ôn thi:</span>
                     <button
                       onClick={() => setCurrentTab('mindmap')}
-                      className="inline-flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-extrabold text-white bg-indigo-600 hover:bg-indigo-500 rounded-xl shadow-md transition-all cursor-pointer"
+                      className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-medium transition-colors cursor-pointer flex items-center gap-1"
                     >
-                      <span>🌳 Bản Đồ Tư Duy (Mindmap)</span>
+                      <Network className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
+                      <span>Bản Đồ Tư Duy</span>
                     </button>
-
                     <button
                       onClick={() => setCurrentTab('flashcards')}
-                      className="inline-flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-extrabold text-white bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-400 hover:to-amber-500 rounded-xl shadow-md transition-all cursor-pointer"
+                      className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-medium transition-colors cursor-pointer flex items-center gap-1"
                     >
-                      <span>🃏 Thẻ Nhớ 3D (Active Recall)</span>
+                      <Layers className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+                      <span>Thẻ Nhớ 3D</span>
                     </button>
-
                     <button
                       onClick={() => setCurrentTab('speed')}
-                      className="inline-flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold text-white bg-rose-600/90 hover:bg-rose-500 rounded-xl shadow-sm transition-all cursor-pointer"
+                      className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-medium transition-colors cursor-pointer flex items-center gap-1"
                     >
-                      <Flame className="w-4 h-4 text-amber-200" />
-                      <span>🔥 Bí Kíp 5 Phút (Bẫy đề)</span>
+                      <Flame className="w-3.5 h-3.5 text-rose-600 dark:text-rose-400" />
+                      <span>Bí Kíp 5 Phút</span>
                     </button>
-
                     <button
                       onClick={() => setCurrentTab('written')}
-                      className="inline-flex items-center gap-2 px-4 py-2.5 text-xs sm:text-sm font-bold text-white bg-emerald-700/80 hover:bg-emerald-600 border border-emerald-500/40 rounded-xl transition-all cursor-pointer"
+                      className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-medium transition-colors cursor-pointer flex items-center gap-1"
                     >
-                      <BookOpen className="w-4 h-4" />
-                      <span>Tự Luận (60 Câu)</span>
+                      <BookOpen className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                      <span>Tự Luận & Ngắn (60 Câu)</span>
                     </button>
                   </div>
                 </div>
