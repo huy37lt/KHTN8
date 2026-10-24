@@ -119,9 +119,18 @@ export const PracticeConfigModal: React.FC<PracticeConfigModalProps> = ({
               <label className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
                 Số Lượng Câu Hỏi
               </label>
-              <span className="text-xs text-slate-500 dark:text-slate-400 tabular-nums">
-                Tổng có sẵn: {totalAvailable} câu
-              </span>
+              <button
+                type="button"
+                onClick={() => {
+                  setQuestionCount(totalAvailable);
+                  setMode('exam');
+                  const recommendedMins = totalAvailable <= 20 ? 25 : totalAvailable <= 35 ? 45 : totalAvailable <= 55 ? 60 : 90;
+                  setTimeLimitMinutes(recommendedMins);
+                }}
+                className="text-xs font-bold text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/60 hover:bg-amber-100 border border-amber-200 dark:border-amber-800 px-2 py-0.5 rounded-md transition-colors cursor-pointer"
+              >
+                🏆 Thi Full Đề ({totalAvailable} câu · Chuẩn Điểm)
+              </button>
             </div>
             <div className="flex items-center gap-2 flex-wrap">
               {countOptions.map(cnt => (

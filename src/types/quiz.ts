@@ -23,7 +23,7 @@ export interface QuizSet {
   grade: string;   // Lớp 6, 7, 8, 9, 10, 11, 12, hoặc Ôn Thi
   description: string;
   questions: Question[];
-  summaries: StudySummary[];
+  summaries?: StudySummary[];
   createdAt: string;
   isDefault?: boolean;
 }

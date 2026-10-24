@@ -27,6 +27,7 @@ interface HeaderProps {
   currentTab: NavTab;
   onSelectTab: (tab: NavTab) => void;
   onOpenImport: () => void;
+  onOpenFullExam?: () => void;
   isDark: boolean;
   onToggleDark: () => void;
   fontSize: 'normal' | 'large';
@@ -38,6 +39,7 @@ export const Header: React.FC<HeaderProps> = ({
   currentTab,
   onSelectTab,
   onOpenImport,
+  onOpenFullExam,
   isDark,
   onToggleDark,
   fontSize,
@@ -121,6 +123,20 @@ export const Header: React.FC<HeaderProps> = ({
               <BookOpen className="w-4 h-4 text-slate-500" />
               <span>Kho Đề Cương</span>
             </button>
+
+            {/* Thi Full Bài Nhanh */}
+            {onOpenFullExam && (
+              <button
+                onClick={onOpenFullExam}
+                className="px-3 py-1.5 rounded-lg transition-all cursor-pointer flex items-center gap-1.5 text-amber-950 dark:text-amber-200 bg-amber-50 dark:bg-amber-950/60 hover:bg-amber-100 dark:hover:bg-amber-900/60 border border-amber-300 dark:border-amber-700/80 font-bold shadow-2xs"
+              >
+                <Sparkles className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+                <span>Thi Full Bài</span>
+                <span className="px-1.5 py-0.2 rounded text-[10px] font-black uppercase bg-amber-500 text-white tracking-wider">
+                  Đề Chuẩn
+                </span>
+              </button>
+            )}
 
             {/* 2. Phòng Thí Nghiệm Ảo */}
             <button
@@ -344,6 +360,14 @@ export const Header: React.FC<HeaderProps> = ({
           >
             Kho Đề
           </button>
+          {onOpenFullExam && (
+            <button
+              onClick={onOpenFullExam}
+              className="px-3 py-1 rounded-md transition-colors cursor-pointer flex items-center gap-1 bg-amber-500 text-white font-bold shadow-xs"
+            >
+              <span>🏆 Thi Full Bài</span>
+            </button>
+          )}
           <button
             onClick={() => onSelectTab('lab')}
             className={`px-3 py-1 rounded-md transition-colors cursor-pointer flex items-center gap-1 ${

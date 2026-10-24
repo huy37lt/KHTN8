@@ -1,10 +1,11 @@
 import React from 'react';
-import { BookOpen, Play, Trash2, Printer, FlaskConical, Atom, Dna, Trophy, CheckSquare } from 'lucide-react';
+import { BookOpen, Play, Trash2, Printer, FlaskConical, Atom, Dna, Trophy, CheckSquare, Clock } from 'lucide-react';
 import { QuizSet } from '../types/quiz';
 
 interface QuizCardProps {
   quizSet: QuizSet;
   onStartPractice: (quizSet: QuizSet) => void;
+  onStartFullExam: (quizSet: QuizSet) => void;
   onReviewStudy: (quizSet: QuizSet) => void;
   onPrintSet: (quizSet: QuizSet) => void;
   onDeleteSet: (id: string) => void;
@@ -13,6 +14,7 @@ interface QuizCardProps {
 export const QuizCard: React.FC<QuizCardProps> = ({
   quizSet,
   onStartPractice,
+  onStartFullExam,
   onReviewStudy,
   onPrintSet,
   onDeleteSet
@@ -102,24 +104,17 @@ export const QuizCard: React.FC<QuizCardProps> = ({
     if (quizSet.subject.includes('HĐTN')) {
       return {
         icon: Trophy,
-        color: 'text-purple-600 dark:text-purple-400',
-        bg: 'bg-purple-50 dark:bg-purple-950/50 border-purple-200 dark:border-purple-800/60',
-        badge: 'text-purple-900 dark:text-purple-200 bg-purple-100/90 dark:bg-purple-900/60 border border-purple-300/50'
+        color: 'text-indigo-600 dark:text-indigo-400',
+        bg: 'bg-indigo-50 dark:bg-indigo-950/50 border-indigo-200 dark:border-indigo-800/60',
+        badge: 'text-indigo-900 dark:text-indigo-200 bg-indigo-100/90 dark:bg-indigo-900/60 border border-indigo-300/50'
       };
     }
-    if (quizSet.subject.includes('Đúng / Sai')) {
-      return {
-        icon: CheckSquare,
-        color: 'text-purple-600 dark:text-purple-400',
-        bg: 'bg-purple-50 dark:bg-purple-950/50 border-purple-200 dark:border-purple-800/60',
-        badge: 'text-purple-800 dark:text-purple-300 bg-purple-100/90 dark:bg-purple-900/60 border border-purple-300/50'
-      };
-    }
+    // Default fallback
     return {
-      icon: Trophy,
-      color: 'text-emerald-600 dark:text-emerald-400',
-      bg: 'bg-emerald-50 dark:bg-emerald-950/50 border-emerald-200 dark:border-emerald-800/60',
-      badge: 'text-emerald-800 dark:text-emerald-200 bg-emerald-100/90 dark:bg-emerald-900/60 border border-emerald-300/50'
+      icon: BookOpen,
+      color: 'text-slate-700 dark:text-slate-300',
+      bg: 'bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800',
+      badge: 'text-slate-800 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 border border-slate-300/50'
     };
   };
 
@@ -127,26 +122,29 @@ export const QuizCard: React.FC<QuizCardProps> = ({
   const IconComponent = visual.icon;
 
   return (
-    <div className="group relative bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-2xl p-6 hover:border-emerald-500/60 dark:hover:border-emerald-500/60 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between">
+    <div className="bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 rounded-2xl p-5 hover:border-slate-300 dark:hover:border-slate-700 transition-all shadow-xs hover:shadow-sm flex flex-col justify-between group">
       <div>
-        {/* Header Icon + Subject Badges with bigger, bolder font */}
-        <div className="flex items-start justify-between gap-3 mb-4">
-          <div className={`w-11 h-11 rounded-xl flex items-center justify-center border ${visual.bg} shrink-0`}>
-            <IconComponent className={`w-5 h-5 ${visual.color}`} />
-          </div>
-
-          <div className="flex items-center gap-2 text-xs">
-            <span className={`text-sm sm:text-base font-extrabold px-3 py-1 rounded-xl shadow-xs tracking-wide ${visual.badge}`}>
-              {quizSet.subject}
+        {/* Top Badges */}
+        <div className="flex items-center justify-between gap-2 mb-3.5">
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-bold tracking-tight ${visual.badge}`}>
+              <IconComponent className="w-3.5 h-3.5" />
+              <span>{quizSet.subject}</span>
             </span>
-            <span className="text-slate-400 font-semibold text-xs">
+            <span className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded-md">
               {quizSet.grade}
             </span>
           </div>
+
+          {quizSet.isDefault && (
+            <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/80 border border-emerald-200 dark:border-emerald-800 px-2 py-0.5 rounded-md">
+              Đề Cương Chuẩn
+            </span>
+          )}
         </div>
 
-        {/* Card Title */}
-        <h3 className="text-lg font-bold text-slate-900 dark:text-white leading-snug group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+        {/* Title */}
+        <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white line-clamp-2 leading-snug group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
           {quizSet.title}
         </h3>
 
@@ -170,12 +168,23 @@ export const QuizCard: React.FC<QuizCardProps> = ({
       </div>
 
       {/* Card Actions Footer */}
-      <div className="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between gap-3 flex-wrap">
-        <div className="flex items-center gap-2">
-          {/* Practice Button */}
+      <div className="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between gap-2 flex-wrap">
+        <div className="flex items-center gap-2 flex-wrap">
+          {/* Thi Full Bài (Exam Mode 100% Questions) */}
+          <button
+            onClick={() => onStartFullExam(quizSet)}
+            title="Vào phòng thi làm toàn bộ 100% câu hỏi, có đồng hồ đếm ngược và chấm điểm thang 10"
+            className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-bold text-amber-900 dark:text-amber-100 bg-amber-100/90 hover:bg-amber-200 dark:bg-amber-950/70 dark:hover:bg-amber-900/90 border border-amber-300/80 dark:border-amber-700/80 rounded-xl transition-colors cursor-pointer shadow-2xs"
+          >
+            <Trophy className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+            <span>Thi Full Bài</span>
+          </button>
+
+          {/* Practice Button (Immediate / Custom) */}
           <button
             onClick={() => onStartPractice(quizSet)}
-            className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 rounded-xl shadow-xs transition-colors cursor-pointer"
+            title="Tùy chỉnh số lượng câu hỏi hoặc ôn từng câu biết đáp án ngay"
+            className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 rounded-xl shadow-xs transition-colors cursor-pointer"
           >
             <Play className="w-3.5 h-3.5 fill-current" />
             <span>Luyện Tập</span>
@@ -185,7 +194,7 @@ export const QuizCard: React.FC<QuizCardProps> = ({
           {quizSet.summaries && quizSet.summaries.length > 0 && (
             <button
               onClick={() => onReviewStudy(quizSet)}
-              className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-2.5 py-2 text-xs font-semibold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition-colors cursor-pointer"
             >
               <BookOpen className="w-3.5 h-3.5 text-slate-500" />
               <span>Ôn Lý Thuyết</span>

@@ -33,6 +33,7 @@ import { MindmapView } from './components/MindmapView';
 import { FlashcardsView } from './components/FlashcardsView';
 import { SmartSearchView } from './components/SmartSearchView';
 import { VirtualLabView } from './components/VirtualLabView';
+import { FullExamModal } from './components/FullExamModal';
 
 export default function App() {
   // Navigation & View State
@@ -54,6 +55,7 @@ export default function App() {
   const [printModalSet, setPrintModalSet] = useState<QuizSet | null>(null);
   const [isImportModalOpen, setIsImportModalOpen] = useState(false);
   const [isIntroOpen, setIsIntroOpen] = useState(false);
+  const [isFullExamModalOpen, setIsFullExamModalOpen] = useState(false);
   const [studyReviewSetId, setStudyReviewSetId] = useState<string | undefined>(undefined);
 
   // Filters & Search
@@ -99,6 +101,31 @@ export default function App() {
   // Handle Practice Initiation
   const handleOpenPracticeConfig = (set: QuizSet) => {
     setConfigModalSet(set);
+  };
+
+  // Handle Instant Full Exam (100% of questions, Exam Mode, Real Timer, Grading)
+  const handleStartFullExam = (set: QuizSet) => {
+    const total = set.questions.length;
+    const timeLimitMinutes = total <= 20 ? 25 : total <= 35 ? 45 : total <= 55 ? 60 : 90;
+    const preparedQuestions = shuffleArray([...set.questions]).map(q => shuffleQuestionOptions(q));
+
+    setActiveSession({
+      quizSet: {
+        ...set,
+        title: `🏆 [THI THỬ CHUẨN] ${set.title}`
+      },
+      questions: preparedQuestions,
+      config: {
+        mode: 'exam',
+        questionCount: total,
+        shuffleQuestions: true,
+        shuffleOptions: true,
+        timeLimitMinutes
+      }
+    });
+    setExamResult(null);
+    setIsFullExamModalOpen(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleStartPractice = (config: PracticeConfig) => {
@@ -291,6 +318,7 @@ export default function App() {
           currentTab={currentTab}
           onSelectTab={setCurrentTab}
           onOpenImport={() => setIsImportModalOpen(true)}
+          onOpenFullExam={() => setIsFullExamModalOpen(true)}
           isDark={isDark}
           onToggleDark={() => setIsDark(!isDark)}
           fontSize={fontSize}
@@ -340,11 +368,11 @@ export default function App() {
                       <div className="text-xs text-slate-500 dark:text-slate-400 font-medium mt-0.5">Trắc nghiệm phân loại chuẩn</div>
                     </div>
                     <div className="bg-slate-50/80 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/60 rounded-xl p-3.5 text-center">
-                      <div className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tabular-nums">220+ Câu</div>
-                      <div className="text-xs text-slate-500 dark:text-slate-400 font-medium mt-0.5">Trắc nghiệm có giải thích chi tiết</div>
+                      <div className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tabular-nums">260+ Câu</div>
+                      <div className="text-xs text-slate-500 dark:text-slate-400 font-medium mt-0.5">Trắc nghiệm đúng đủ đề cương</div>
                     </div>
                     <div className="bg-slate-50/80 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-700/60 rounded-xl p-3.5 text-center">
-                      <div className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tabular-nums">60+ Bài Tự Luận</div>
+                      <div className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tabular-nums">75+ Bài Tự Luận</div>
                       <div className="text-xs text-slate-500 dark:text-slate-400 font-medium mt-0.5">Định lượng & vận dụng thực tế</div>
                     </div>
                   </div>
@@ -352,14 +380,19 @@ export default function App() {
                   {/* Refined Action Area */}
                   <div className="pt-2 flex flex-col sm:flex-row sm:items-center gap-3">
                     <button
-                      onClick={() => setCurrentTab('lab')}
-                      className="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-bold text-white bg-slate-900 hover:bg-slate-800 dark:bg-emerald-600 dark:hover:bg-emerald-500 rounded-xl shadow-xs transition-colors cursor-pointer"
+                      onClick={() => setIsFullExamModalOpen(true)}
+                      className="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-bold text-white bg-amber-600 hover:bg-amber-700 active:bg-amber-800 rounded-xl shadow-xs transition-colors cursor-pointer"
                     >
-                      <FlaskConical className="w-4 h-4 text-emerald-400 dark:text-white" />
-                      <span>Phòng Thí Nghiệm Ảo (Mô Phỏng Trực Quan)</span>
-                      <span className="px-1.5 py-0.5 rounded text-[10px] font-black uppercase bg-emerald-500/20 text-emerald-300 dark:bg-white/20 dark:text-white">
-                        Mới
-                      </span>
+                      <Trophy className="w-4 h-4 text-white" />
+                      <span>🏆 Thi Full Bài (Thi Thử Chuẩn Thang Điểm 10)</span>
+                    </button>
+
+                    <button
+                      onClick={() => setCurrentTab('lab')}
+                      className="inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-bold text-slate-800 dark:text-white bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-xl transition-colors cursor-pointer"
+                    >
+                      <FlaskConical className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                      <span>Phòng Thí Nghiệm Ảo</span>
                     </button>
 
                     <button
@@ -475,6 +508,7 @@ export default function App() {
                       key={set.id}
                       quizSet={set}
                       onStartPractice={handleOpenPracticeConfig}
+                      onStartFullExam={handleStartFullExam}
                       onReviewStudy={(s) => {
                         setStudyReviewSetId(s.id);
                         setCurrentTab('study');
@@ -613,6 +647,14 @@ export default function App() {
             const tongHop = quizSets.find(s => s.id === 'khtn8-tong-hop-bat-trang') || quizSets[0];
             if (tongHop) handleOpenPracticeConfig(tongHop);
           }}
+        />
+
+        {/* Full Exam Picker Modal */}
+        <FullExamModal
+          isOpen={isFullExamModalOpen}
+          onClose={() => setIsFullExamModalOpen(false)}
+          quizSets={quizSets}
+          onStartExam={handleStartFullExam}
         />
 
       </div>
